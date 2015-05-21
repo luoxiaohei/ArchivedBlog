@@ -21,7 +21,7 @@
 
 <div class="busuanzi">
   <span id="busuanzi_container_site_uv">
-    访客数 <a class="theme-link"><span id="busuanzi_value_site_uv"></span></a> 人
+    迄今来访 <a class="theme-link"><span id="busuanzi_value_site_uv"></span></a> 人
   </span>
 </div>
 
