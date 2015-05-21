@@ -13,14 +13,24 @@
 }
 
 .powered-by,
-.theme-info { display: inline-block; }
+.theme-info,
+.busuanzi {
+  display: inline-block;
+}
 
 .powered-by {
   margin-right: 10px;
-
   &::after {
     content: "|";
     padding-left: 10px;
+  }
+}
+
+.theme-info {
+  &::after {
+    content: "|";
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
