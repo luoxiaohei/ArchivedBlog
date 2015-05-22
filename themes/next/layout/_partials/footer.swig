@@ -21,7 +21,7 @@
 
 <div class="busuanzi">
   <span id="busuanzi_container_site_uv">
-    迄今来访 <a class="theme-link"><span id="busuanzi_value_site_uv"></span></a> 人
+    {{__('footer.busuanzi', '<a class="theme-link" href="http://service.ibruce.info"><span id="busuanzi_value_site_uv"></span></a>')}}
   </span>
 </div>
 
