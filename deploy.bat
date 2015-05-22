@@ -1,3 +1,4 @@
+@echo off
 set auto=0
 set commit_message=%2
 
@@ -6,9 +7,7 @@ if "%1" == "c" (
     goto deploy) else if "%1" == "u" (
     goto upload) else (
         set auto=1
-        if "%1" == "" (
-            set commit_message="update source files") else (
-            set commit_message=%1)
+        set commit_message=%1
     )
 
 :clean
@@ -25,8 +24,10 @@ if %auto% == 0 (
 
 :upload
 echo Start upload source files
+if not defined commit_message (
+    set commit_message="update source files.")
 git add .
-git commit -m %commit_message
+git commit -m %commit_message%
 git push origin master:source
 
 :end
