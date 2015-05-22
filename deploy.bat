@@ -28,6 +28,6 @@ if not defined commit_message (
     set commit_message="update source files.")
 git add .
 git commit -m %commit_message%
-git push origin master:source
+git push -f origin master:source
 
 :end
