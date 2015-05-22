@@ -9,5 +9,7 @@ echo Clean files
 cmd /c hexo clean
 echo Start upload source files
 git add .
-git commit -a -m "update source files"
-git push origin master:master
+if %1 == "" (
+    git commit -a -m "update source files") else (
+    git commit -a -m %1)
+git push origin master:source
