@@ -65,11 +65,11 @@ stylus:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
 - type: git
-  repo: git@gitcafe.com:SMVirus/blog.git
-  branch: gitcafe-pages
-- type: git
   repo: git@github.com:luoxiaohei/blog.git
   branch: gh-pages
+- type: git
+  repo: git@gitcafe.com:SMVirus/blog.git
+  branch: gitcafe-pages
 
 # =============================================================================
 # NexT Theme configuration
@@ -87,11 +87,10 @@ disqus_shortname:
 
 # 社交链接，将在侧栏中显示
 social:
+  HomePage: http://smvirus.com
   GitHub: https://www.github.com/luoxiaohei
-  Twitter: https://twitter.com/CN_LShang
   Weibo: http://weibo.com/lshang
   Mail: MailTo:Admin@SMVirus.CoM
-  HomePage: http://smvirus.com
   # 等等
 
 
