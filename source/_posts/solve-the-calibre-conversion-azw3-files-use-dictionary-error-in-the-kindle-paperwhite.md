@@ -5,7 +5,7 @@ tags: Kindle
 description:
 ---
 
-最近购买了Amazon推出了新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。
+最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。
 本文记录了解决该问题的方法。
 <!-- more -->
 ##问题现象
