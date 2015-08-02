@@ -18,7 +18,7 @@ AutoIt的解释器程序为Aut2Exe目录中的AutoItSC.bin文件（新版中解�
 可通过以下链接进行下载v3.3.8.1版本的安装文件并解压获取
 [https://www.autoitscript.com/autoit3/files/archive/autoit/autoit-v3.3.8.1.zip](https://www.autoitscript.com/autoit3/files/archive/autoit/autoit-v3.3.8.1.zip)
 或直接通过以下链接下载
-[http://smvirus.com/blog/2015/05/20/decompiling-compiled-autoit-scripts-64bit/AutoItSC.zip](http://smvirus.com/blog/2015/05/20/decompiling-compiled-autoit-scripts-64bit/AutoItSC.zip)
+[http://blog.smvirus.com/blog/2015/05/20/decompiling-compiled-autoit-scripts-64bit/AutoItSC.zip](http://blog.smvirus.com/blog/2015/05/20/decompiling-compiled-autoit-scripts-64bit/AutoItSC.zip)
 
 ###提取编译后的AutoIt脚本
 
