@@ -87,6 +87,8 @@ duoshuo_hotartical: false
 # DISQUS 帐号 （如果已经设置 多说 帐号，此选项将被跳过）
 disqus_shortname:
 
+# Swiftype 站内搜索
+swiftype_key: dwy-_3DEQHHE923aFCn2
 
 # 社交链接，将在侧栏中显示
 social:
