@@ -8,6 +8,8 @@
     {{ __('title.category') + page_title_suffix }}
   {% elif page.type === "tags" %}
     {{ __('title.tag') + page_title_suffix }}
+  {% elif page.title === "" %}
+    {{ "404" + page_title_suffix }}
   {% else %}
     {{ page.title + page_title_suffix }}
   {% endif %}

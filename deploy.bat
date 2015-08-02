@@ -26,7 +26,7 @@ if %auto% == 0 (
 echo Start upload source files
 if not defined commit_message (
     set commit_message="update source files.")
-git add .
+git add --all
 git commit -m %commit_message%
 git push origin master:source
 
