@@ -1,4 +1,4 @@
-title: "解决Calibre转换后的.azw3文件在Kindle中词典取词错误"
+title: "解决Calibre转换的.azw3文件在Kindle中取词错误"
 date: 2015-07-05 02:04:52
 categories: 问题记录
 tags: Kindle

@@ -88,7 +88,7 @@ duoshuo_hotartical: false
 disqus_shortname:
 
 # 多说 分享服务（必须启用多说）
-duoshuo_share: true
+duoshuo_share: false
 
 # Swiftype 站内搜索
 swiftype_key: dwy-_3DEQHHE923aFCn2
