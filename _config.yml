@@ -75,6 +75,9 @@ deploy:
 # NexT Theme configuration
 # =============================================================================
 
+# 站点头像
+avatar: "http://7xicmh.com1.z0.glb.clouddn.com/website/author.jpg"
+
 # 多说帐号
 duoshuo_shortname: smVirus
 
@@ -93,6 +96,16 @@ social:
   Mail: MailTo:Admin@SMVirus.CoM
   # 等等
 
+# 友情链接
+links_title: His friends
+# links
+links:
+  吾爱破解: http://www.52pojie.cn/
+  "Key Kernel": http://www.keykernel.org/
+  屌丝代码: http://www.diaosicode.com/
+
+# 不蒜子，博客访问计数
+busuanzi: true
 
 # Creative Commons 4.0 International License.
 # http://creativecommons.org/

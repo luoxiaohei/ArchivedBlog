@@ -2,14 +2,12 @@
 {% import '_macro/sidebar.swig' as sidebar_template %}
 
 {% block title %}
-  {% set page_title_suffix = ' // ' + config.title %}
+  {% set page_title_suffix = ' | ' + config.title %}
 
   {% if page.type === "categories" %}
     {{ __('title.category') + page_title_suffix }}
   {% elif page.type === "tags" %}
     {{ __('title.tag') + page_title_suffix }}
-  {% elif page.title === "" %}
-    {{ "404" + page_title_suffix }}
   {% else %}
     {{ page.title + page_title_suffix }}
   {% endif %}
