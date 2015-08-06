@@ -26,24 +26,29 @@ class CashReturn(CashSuper):
             result = money - (int(money / self.moneyCondition) * self.moneyReturn)
         return result
 
+
 class CashContext:
-    def __init__(self, csuper):
-        self.cs = csuper
+    stratey = {}
+    stratey[1] = CashNormal()
+    stratey[2] = CashRebate(0.8)
+    stratey[3] = CashReturn(300, 100)
+    def __init__(self, cashType):
+        if cashType in self.stratey:
+            self.cs = self.stratey[cashType]
+        else:
+            raise Exception('cashType error.')
 
     def GetResult(self, money):
         return self.cs.acceptCash(money)
 
 if __name__ == '__main__':
     money = input(u'Money: ')
-    stratey = {}
-    stratey[1] = CashContext(CashNormal())
-    stratey[2] = CashContext(CashRebate(0.8))
-    stratey[3] = CashContext(CashReturn(300, 100))
-    cashType = None
-    while cashType not in stratey:
-        cashType = input(u'1. Normal.\n2. Discount of twenty percent.\n3. Per more than $300 cashback $100.\nPay type: ')
-        if cashType in stratey:
-            print cashType
-            print u'Amount Paid: %.2f' % stratey[cashType].GetResult(money)
-        else:
-            print u'Pay type error.\n'
+    repeat = True
+    while repeat is True:
+        try:
+            cashType = input(u'1. Normal.\n2. Discount of twenty percent.\n3. Per more than $300 cashback $100.\nPay type: ')
+            csuper = CashContext(cashType)
+            print u'Amount Paid: %.2f' % csuper.GetResult(money)
+            repeat = False
+        except Exception:
+            print '\nPay type error.\n'
