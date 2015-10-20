@@ -1,0 +1,774 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="6O--eeoQkyybt3zj3XXCwFh4tp4KuMfjMLLuoxFqOFo" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="永远年轻，永远热泪盈眶！" />
+
+
+
+  <meta name="keywords" content="Windbg," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lShang's Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+
+
+<meta name="description" content="最近在使用PcxFirefox浏览器时，发现其x64版本在Win8.1系统中一旦触发文件选择框，如下载/打开文件时，浏览器就会崩溃。
+在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修复Win8.1 x64环境下PcxFirefox打开文件崩溃">
+<meta property="og:url" content="http://blog.smvirus.com/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/index.html">
+<meta property="og:site_name" content="lShang's Blog">
+<meta property="og:description" content="最近在使用PcxFirefox浏览器时，发现其x64版本在Win8.1系统中一旦触发文件选择框，如下载/打开文件时，浏览器就会崩溃。
+在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/crash.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/windbg_crash.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-rip.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-code.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-b9f0.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-b9f0.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/fix-ok.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ba-b9f0.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-hook.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/fix-hook.jpg">
+<meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/is-ok.jpg">
+<meta property="og:updated_time" content="2015-05-21T12:36:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="修复Win8.1 x64环境下PcxFirefox打开文件崩溃">
+<meta name="twitter:description" content="最近在使用PcxFirefox浏览器时，发现其x64版本在Win8.1系统中一旦触发文件选择框，如下载/打开文件时，浏览器就会崩溃。
+在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <title> 修复Win8.1 x64环境下PcxFirefox打开文件崩溃 | lShang's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '[object Object]', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ad2b0a37daea1f399c1929c99bf31fa8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">lShang's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'dwy-_3DEQHHE923aFCn2','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              修复Win8.1 x64环境下PcxFirefox打开文件崩溃
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2014-05-06T19:19:46+08:00" content="2014-05-06">
+            2014-05-06
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/调试逆向/" itemprop="url" rel="index">
+                  <span itemprop="name">调试逆向</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>最近在使用PcxFirefox浏览器时，发现其x64版本在Win8.1系统中一旦触发文件选择框，如下载/打开文件时，浏览器就会崩溃。</p>
+<p>在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。<br><a id="more"></a></p>
+<p>##问题现象<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/crash.jpg" alt=""></p>
+<p>##问题定位</p>
+<p>###捕获异常<br>首先使用Windbg重新加载崩溃程序Firefox.exe，然后执行g命令执行程序并触发崩溃，Windbg捕获到如下异常<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/windbg_crash.jpg" alt=""><br>得知错误代码出现在<code>00007ffa&#39;5bbab9fd</code>，在当前地址反汇编得到如下代码<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-rip.jpg" alt=""></p>
+<p>###定位异常模块<br>查看当前出错模块路径如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0:000&#62; lmf a rip&#10;start             end                 module name&#10;00007ffa`5b9f0000 00007ffa`5ce07000   SHELL32  C:\windows\system32\SHELL32.dll</span><br></pre></td></tr></table></figure></p>
+<p>###分析异常代码<br>使用IDA Pro反汇编该模块后，发现该地址原始反汇编代码如下，与正在执行代码不同<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-code.jpg" alt=""><br>向前遍历发现，模块中代码从<code>00007ffa&#39;5bbab9f0</code>处开始被覆写了14字节<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-b9f0.jpg" alt=""><br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-b9f0.jpg" alt=""></p>
+<p>###确认异常原因<br>从上图代码可知，该地址为SHGetSpecialFolderPathW函数地址，对比代码可知，该函数被inline hook。<br>进而可以确认崩溃原因是hook过程中将<code>00007ffa&#39;5bbab9fd</code>处一字节覆盖为0，导致cpu解释指令出错，产生异常并引起崩溃。<br>在Windbg中将其修正为48h后恢复进程执行，文件选择框正常被打开。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/fix-ok.jpg" alt=""></p>
+<p>###定位HOOK来源<br>得知崩溃原因后，下一步开始定位是谁hook了SHGetSpecialFolderPathW函数<br>首先重新加载运行Firefox.exe，然后执行sxe ld:shell32.dll命令使调试器在加载该模块后中断程序<br>中断后对<code>00007ffa&#39;5bbab9f0</code>处下写入断点，然后继续执行程序，发现程序被中断在如下地址<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ba-b9f0.jpg" alt=""><br>查看该地址模块路径如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0:000&#62; lmf a rip&#10;start             end                 module name&#10;00000000`63000000 00000000`6300a000   tmemutil D:\MyTools\Tools\UserSoft\PcxFireFox\tmemutil.dll</span><br></pre></td></tr></table></figure></p>
+<p>###分析HOOK代码<br>使用IDA Pro反汇编该模块后，发现正是该地址上下文代码hook了SHGetSpecialFolderPathW函数<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-hook.jpg" alt=""></p>
+<p>该段代码是将hook代码写入到SHGetSpecialFolderPathW函数起始处，但因为其使用的跳转方式为</p>
+<blockquote>
+<p>jmp qword ptr [xxxxxxxx]</p>
+</blockquote>
+<p>对应Opcode为</p>
+<blockquote>
+<p>ff 25 00 00 00 00 xx xx xx xx xx xx xx xx</p>
+</blockquote>
+<p>共需14字节。<br>从前文中可知SHGetSpecialFolderPathW函数地址距离之后代码只有13字节，故使用这种跳转方式进行hook，会覆盖掉函数中的代码，进而导致异常，引起崩溃。</p>
+<p>##解决方案<br>因为该问题是由于temeutil模块对SHGetSpecialFolderPathW函数进行hook时使用了错误的跳转方式导致的，故考虑修改其跳转方式。<br>在64位系统下，除上述跳转方式外，还可使用如下方式进行绝对地址跳转</p>
+<blockquote>
+<p>mov rax,xxxxxxxx<br>jmp rax</p>
+</blockquote>
+<p>对应Opcode为</p>
+<blockquote>
+<p>48 b8 xx xx xx xx xx xx xx xx<br>ff e0</p>
+</blockquote>
+<p>这样仅需覆写12个字节即可完成hook，可以解决掉覆盖正常代码的问题。<br>因为没有找到可以直接patch64位程序的工具（Windbg/IDA Pro的patch功能均不支持带64位寄存器的指令），固只好在IDA Pro中进行Hex修改，然后通过WinHex保存到文件中。<br>修正后的代码如下<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/fix-hook.jpg" alt=""></p>
+<p>需要注意的是，在hook函数内部会首先恢复SHGetSpecialFolderPathW的代码，调用完成后会重新inline hook，故需要对恢复hook的代码进行相同的修改。</p>
+<p>###成果展示<br>完成上述步骤后，用修改后的dll文件替换掉原dll文件，再次测试触发文件选择框时，已可正常打开文件选择框。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/is-ok.jpg" alt=""></p>
+<p>##修正后文件<br>版本：pcxFirefox-28.0-zhCN-vc2010-x64-sse2-betterpgo-140318<br>md5：7b6f5ce613e8d8c9e8b91ca4f6b6cc9039b0a6f5<br>下载：<a href="http://pan.baidu.com/s/1fCfsM" target="_blank" rel="external">temeutil.dll</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Windbg/" rel="tag">#Windbg</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/06/19/python-script-written-with-patch/" rel="prev">用Python写Patch脚本</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/" rel="next">解决Sublime Text中文字符显示为方块</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/"
+                   data-title="修复Win8.1 x64环境下PcxFirefox打开文件崩溃" data-url="http://blog.smvirus.com/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://7xicmh.com1.z0.glb.clouddn.com/website/author.jpg" alt="lSHANG" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">lSHANG</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">永远年轻，永远热泪盈眶！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://smvirus.com" target="_blank">HomePage</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.github.com/luoxiaohei" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/lshang" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">Mail</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-links-title">His friends</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2014 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lSHANG</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+  <div class="busuanzi">
+    <span id="busuanzi_container_site_uv">
+      迄今来访 <a class="theme-link" href="http://service.ibruce.info"><span id="busuanzi_value_site_uv"></span></a> 人
+    </span>
+  </div>
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"smVirus"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
