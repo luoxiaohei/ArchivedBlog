@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html class="theme-next use-motion theme-next-pisces">
 <head>
   
 
@@ -18,12 +18,20 @@
 
 
 
+
+
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
 
 
     <meta name="description" content="永远年轻，永远热泪盈眶！" />
@@ -38,28 +46,36 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="简单工厂模式的核心思想是通过创建一个工厂类来根据不同条件生产不同的类，然后根据不同类对基类方法的覆写得到不同的结果。">
+<meta name="description" content="简单工厂模式的核心思想是通过创建一个工厂类来根据不同条件生产不同的类，然后根据不同类对基类方法的覆写得到不同的结果。
+优势新添加类时，不影响之前的代码，仅需编写新增类代码和修改工厂类代码。
+劣势客户端必须知道基类和工厂类，耦合性差。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大话设计模式——简单工厂模式">
 <meta property="og:url" content="http://blog.smvirus.com/2015/07/29/大话设计模式——简单工厂模式/index.html">
 <meta property="og:site_name" content="lShang's Blog">
-<meta property="og:description" content="简单工厂模式的核心思想是通过创建一个工厂类来根据不同条件生产不同的类，然后根据不同类对基类方法的覆写得到不同的结果。">
+<meta property="og:description" content="简单工厂模式的核心思想是通过创建一个工厂类来根据不同条件生产不同的类，然后根据不同类对基类方法的覆写得到不同的结果。
+优势新添加类时，不影响之前的代码，仅需编写新增类代码和修改工厂类代码。
+劣势客户端必须知道基类和工厂类，耦合性差。">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/大话设计模式——简单工厂模式/UML.png">
-<meta property="og:updated_time" content="2015-07-29T18:00:49.000Z">
+<meta property="og:updated_time" content="2015-10-21T17:24:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大话设计模式——简单工厂模式">
-<meta name="twitter:description" content="简单工厂模式的核心思想是通过创建一个工厂类来根据不同条件生产不同的类，然后根据不同类对基类方法的覆写得到不同的结果。">
+<meta name="twitter:description" content="简单工厂模式的核心思想是通过创建一个工厂类来根据不同条件生产不同的类，然后根据不同类对基类方法的覆写得到不同的结果。
+优势新添加类时，不影响之前的代码，仅需编写新增类代码和修改工厂类代码。
+劣势客户端必须知道基类和工厂类，耦合性差。">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post'
   };
 </script>
+
+
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -79,6 +95,8 @@
   </div>
 <![endif]-->
   
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -101,20 +119,23 @@
 
 
 
+
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">lShang's Blog</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -133,7 +154,9 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
             首页
           </a>
         </li>
@@ -141,7 +164,9 @@
         
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
             分类
           </a>
         </li>
@@ -149,7 +174,9 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
             归档
           </a>
         </li>
@@ -157,7 +184,9 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
             标签
           </a>
         </li>
@@ -165,13 +194,24 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
             关于
           </a>
         </li>
       
 
       
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search icon-next-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
       
     </ul>
   
@@ -205,63 +245,75 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              大话设计模式——简单工厂模式
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-07-29T22:49:08+08:00" content="2015-07-29">
-            2015-07-29
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                  <span itemprop="name">读书笔记</span>
-                </a>
-              </span>
-
-              
-              
-
             
+              
+                大话设计模式——简单工厂模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-07-29T22:49:08+08:00" content="2015-07-29">
+              2015-07-29
+            </time>
           </span>
-        
 
-        
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/07/29/大话设计模式——简单工厂模式/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/29/大话设计模式——简单工厂模式/" itemprop="commentsCount"></span>
-              </a>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
             </span>
           
-        
-      </div>
-    </header>
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/29/大话设计模式——简单工厂模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/29/大话设计模式——简单工厂模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
 
     <div class="post-body">
 
@@ -269,14 +321,14 @@
       
 
       
-        <span itemprop="articleBody"><p>简单工厂模式的核心思想是通过创建一个工厂类来根据不同条件生产不同的类，然后根据不同类对基类方法的覆写得到不同的结果。<br><a id="more"></a></p>
-<p>#优势<br>新添加类时，不影响之前的代码，仅需编写新增类代码和修改工厂类代码。</p>
-<p>#劣势<br>客户端必须知道基类和工厂类，耦合性差。</p>
-<p>#程序实例<br>四则运算计算器，根据用户的输入生产对应的运算类并计算结果。</p>
-<p>##UML类图<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/大话设计模式——简单工厂模式/UML.png" alt=""></p>
-<p>##C#代码<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> _numberA = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> _numberB = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> NumberA</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberA; &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; _numberA = <span class="keyword">value</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> NumberB</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberB; &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; _numberB = <span class="keyword">value</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OperationAdd</span> : <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        result = NumberA + NumberB;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OperationSub</span> : <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        result = NumberA - NumberB;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OperationMul</span> : <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        result = NumberA * NumberB;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OperationDiv</span> : <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (NumberB == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"除数不能为0."</span>);</span><br><span class="line">        result = NumberA / NumberB;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OPerationFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Operation <span class="title">createOperate</span>(<span class="params"><span class="keyword">string</span> operate</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Operation oper = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">switch</span> (operate)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                oper = <span class="keyword">new</span> OperationAdd();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                oper = <span class="keyword">new</span> OperationSub();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                oper = <span class="keyword">new</span> OperationMul();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                oper = <span class="keyword">new</span> OperationDiv();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> oper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Operation oper;</span><br><span class="line">        Console.Write(<span class="string">"Operator: "</span>);</span><br><span class="line">        oper = OPerationFactory.createOperate(Console.ReadLine());</span><br><span class="line">        Console.Write(<span class="string">"NumberA: "</span>);</span><br><span class="line">        oper.NumberA = <span class="keyword">double</span>.Parse(Console.ReadLine());</span><br><span class="line">        Console.Write(<span class="string">"NumberB: "</span>);</span><br><span class="line">        oper.NumberB = <span class="keyword">double</span>.Parse(Console.ReadLine());</span><br><span class="line">        <span class="keyword">double</span> result = oper.GetResult();</span><br><span class="line">        Console.WriteLine(<span class="string">"Result: "</span> + result.ToString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##Python代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Operation</span>:</span></span><br><span class="line">    NumberA = <span class="number">0</span></span><br><span class="line">    NumberB = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationAdd</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.NumberA + self.NumberB</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationSub</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.NumberA - self.NumberB</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationMul</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.NumberA * self.NumberB</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationDiv</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.NumberB == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">u'除数不能为0.'</span>)</span><br><span class="line">        <span class="keyword">return</span> self.NumberA / float(self.NumberB)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationFactory</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    operation = dict()</span><br><span class="line">    operation[<span class="string">'+'</span>] = OperationAdd()</span><br><span class="line">    operation[<span class="string">'-'</span>] = OperationSub()</span><br><span class="line">    operation[<span class="string">'*'</span>] = OperationMul()</span><br><span class="line">    operation[<span class="string">'/'</span>] = OperationDiv()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">createOperation</span><span class="params">(self, operate)</span>:</span></span><br><span class="line">        oper = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">if</span> operate <span class="keyword">in</span> self.operation:</span><br><span class="line">            oper = self.operation[operate]</span><br><span class="line">        <span class="keyword">return</span> oper</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    oper = OperationFactory().createOperation(raw_input(<span class="string">'Operator: '</span>))</span><br><span class="line">    oper.NumberA = input(<span class="string">'NumberA: '</span>)</span><br><span class="line">    oper.NumberB = input(<span class="string">'NumberB: '</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Result:'</span>,oper.GetResult()</span><br></pre></td></tr></table></figure></p>
-</span>
+        <span itemprop="articleBody"><p>简单工厂模式的核心思想是通过创建一个工厂类来根据不同条件生产不同的类，然后根据不同类对基类方法的覆写得到不同的结果。</p>
+<h1 id="优势">优势</h1><p>新添加类时，不影响之前的代码，仅需编写新增类代码和修改工厂类代码。</p>
+<h1 id="劣势">劣势</h1><p>客户端必须知道基类和工厂类，耦合性差。</p>
+<a id="more"></a>
+<h1 id="程序实例">程序实例</h1><p>四则运算计算器，根据用户的输入生产对应的运算类并计算结果。</p>
+<h2 id="UML类图">UML类图</h2><p><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/大话设计模式——简单工厂模式/UML.png" alt=""></p>
+<h2 id="C#代码">C#代码</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> _numberA = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> _numberB = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> NumberA</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberA; &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; _numberA = <span class="keyword">value</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">double</span> NumberB</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> _numberB; &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; _numberB = <span class="keyword">value</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OperationAdd</span> : <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        result = NumberA + NumberB;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OperationSub</span> : <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        result = NumberA - NumberB;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OperationMul</span> : <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        result = NumberA * NumberB;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OperationDiv</span> : <span class="title">Operation</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">double</span> <span class="title">GetResult</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (NumberB == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"除数不能为0."</span>);</span><br><span class="line">        result = NumberA / NumberB;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">OPerationFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Operation <span class="title">createOperate</span>(<span class="params"><span class="keyword">string</span> operate</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Operation oper = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">switch</span> (operate)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"+"</span>:</span><br><span class="line">                oper = <span class="keyword">new</span> OperationAdd();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"-"</span>:</span><br><span class="line">                oper = <span class="keyword">new</span> OperationSub();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"*"</span>:</span><br><span class="line">                oper = <span class="keyword">new</span> OperationMul();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"/"</span>:</span><br><span class="line">                oper = <span class="keyword">new</span> OperationDiv();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> oper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        Operation oper;</span><br><span class="line">        Console.Write(<span class="string">"Operator: "</span>);</span><br><span class="line">        oper = OPerationFactory.createOperate(Console.ReadLine());</span><br><span class="line">        Console.Write(<span class="string">"NumberA: "</span>);</span><br><span class="line">        oper.NumberA = <span class="keyword">double</span>.Parse(Console.ReadLine());</span><br><span class="line">        Console.Write(<span class="string">"NumberB: "</span>);</span><br><span class="line">        oper.NumberB = <span class="keyword">double</span>.Parse(Console.ReadLine());</span><br><span class="line">        <span class="keyword">double</span> result = oper.GetResult();</span><br><span class="line">        Console.WriteLine(<span class="string">"Result: "</span> + result.ToString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Python代码">Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Operation</span>:</span></span><br><span class="line">    NumberA = <span class="number">0</span></span><br><span class="line">    NumberB = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationAdd</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.NumberA + self.NumberB</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationSub</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.NumberA - self.NumberB</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationMul</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.NumberA * self.NumberB</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationDiv</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.NumberB == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">u'除数不能为0.'</span>)</span><br><span class="line">        <span class="keyword">return</span> self.NumberA / float(self.NumberB)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OperationFactory</span><span class="params">(Operation)</span>:</span></span><br><span class="line">    operation = dict()</span><br><span class="line">    operation[<span class="string">'+'</span>] = OperationAdd()</span><br><span class="line">    operation[<span class="string">'-'</span>] = OperationSub()</span><br><span class="line">    operation[<span class="string">'*'</span>] = OperationMul()</span><br><span class="line">    operation[<span class="string">'/'</span>] = OperationDiv()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">createOperation</span><span class="params">(self, operate)</span>:</span></span><br><span class="line">        oper = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">if</span> operate <span class="keyword">in</span> self.operation:</span><br><span class="line">            oper = self.operation[operate]</span><br><span class="line">        <span class="keyword">return</span> oper</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    oper = OperationFactory().createOperation(raw_input(<span class="string">'Operator: '</span>))</span><br><span class="line">    oper.NumberA = input(<span class="string">'NumberA: '</span>)</span><br><span class="line">    oper.NumberB = input(<span class="string">'NumberB: '</span>)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Result:'</span>,oper.GetResult()</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -293,15 +345,19 @@
 
       
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/02/ida-pro-dump-memory-script/" rel="prev">IDA Pro内存dump脚本</a>
+              <a href="/2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/" rel="next" title="解决Calibre转换的.azw3文件在Kindle中取词错误">
+                <i class="fa fa-chevron-left"></i> 解决Calibre转换的.azw3文件在Kindle中取词错误
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
+          <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/" rel="next">解决Calibre转换的.azw3文件在Kindle中取词错误</a>
+              <a href="/2015/08/02/ida-pro-dump-memory-script/" rel="prev" title="IDA Pro内存dump脚本">
+                IDA Pro内存dump脚本 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -319,22 +375,24 @@
     </div>
   </div>
 
- </div>
 
-        
-
-        
-          <div class="comments" id="comments">
-            
-              <div class="ds-thread" data-thread-key="2015/07/29/大话设计模式——简单工厂模式/"
-                   data-title="大话设计模式——简单工厂模式" data-url="http://blog.smvirus.com/2015/07/29/大话设计模式——简单工厂模式/">
-              </div>
-            
           </div>
-        
-      </div>
 
-      
+          
+
+          
+            <div class="comments" id="comments">
+              
+                <div class="ds-thread" data-thread-key="2015/07/29/大话设计模式——简单工厂模式/"
+                     data-title="大话设计模式——简单工厂模式" data-url="http://blog.smvirus.com/2015/07/29/大话设计模式——简单工厂模式/">
+                </div>
+              
+            </div>
+          
+
+        </div>
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -401,38 +459,27 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://smvirus.com" target="_blank">HomePage</a>
+                <a href="http://smvirus.com" target="_blank">
+                  <i class="fa fa-home"></i> Home
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.github.com/luoxiaohei" target="_blank">GitHub</a>
+                <a href="https://www.github.com/luoxiaohei" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/lshang" target="_blank">Weibo</a>
+                <a href="http://weibo.com/lshang" target="_blank">
+                  <i class="fa fa-weibo"></i> Weibo
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">Mail</a>
-              </span>
-            
-          
-        </div>
-
-        <div class="links-of-author motion-element">
-          
-            <p class="site-links-title">His friends</p>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">
+                  <i class="fa fa-mail"></i> Mail
+                </a>
               </span>
             
           
@@ -447,15 +494,34 @@
           </div>
         
 
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">His friends</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
+              </span>
+            
+          
+        </div>
+
       </section>
 
       
-        <section class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#优势"><span class="nav-text">优势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#劣势"><span class="nav-text">劣势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序实例"><span class="nav-text">程序实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UML类图"><span class="nav-text">UML类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C#代码"><span class="nav-text">C#代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python代码"><span class="nav-text">Python代码</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -466,15 +532,17 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp;  2014 - 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lSHANG</span>
 </div>
@@ -486,7 +554,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -521,6 +589,7 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
@@ -529,31 +598,32 @@
   </script>
     
      
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
+
 
     
   
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
 
 
 
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -717,9 +787,24 @@
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
       }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      // TODO: Isolate Scheme-oriented scripts.
+      if (isPisces()) {
+        var $sidebar = $('#sidebar');
+        var headerHeight = $('.header-inner').height();
+        $sidebar
+          .css({ 'margin-top': headerHeight + 10 })
+          .show();
+      }
+
+      motionIntegrator.bootstrap();
     });
   </script>
 
+  
   
 
   

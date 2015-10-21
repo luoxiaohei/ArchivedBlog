@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html class="theme-next use-motion theme-next-pisces">
 <head>
   
 
@@ -18,19 +18,27 @@
 
 
 
+
+
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
 
 
     <meta name="description" content="永远年轻，永远热泪盈眶！" />
 
 
 
-  <meta name="keywords" content="病毒分析,编程,逆向,调试,smVirus,analysis,virus,code,python" />
+  <meta name="keywords" content="病毒分析,编程,逆向,调试,smVirus,Analysis,Virus,Code,Python,Android,IOS" />
 
 
 
@@ -38,7 +46,7 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
 <meta name="description" content="永远年轻，永远热泪盈眶！">
@@ -54,10 +62,12 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post'
   };
 </script>
+
+
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -77,6 +87,8 @@
   </div>
 <![endif]-->
   
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -99,22 +111,25 @@
 
 
 
+
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">lShang's Blog</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -133,7 +148,9 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
             首页
           </a>
         </li>
@@ -141,7 +158,9 @@
         
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
             分类
           </a>
         </li>
@@ -149,7 +168,9 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
             归档
           </a>
         </li>
@@ -157,7 +178,9 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
             标签
           </a>
         </li>
@@ -165,13 +188,24 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
             关于
           </a>
         </li>
       
 
       
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search icon-next-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
       
     </ul>
   
@@ -205,65 +239,77 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
     
       
 
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/" itemprop="url">
-                解决Sublime Text中文字符显示为方块
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2014-04-08T22:38:31+08:00" content="2014-04-08">
-            2014-04-08
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/问题记录/" itemprop="url" rel="index">
-                  <span itemprop="name">问题记录</span>
+            
+              
+                <a class="post-title-link" href="/2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/" itemprop="url">
+                  解决Sublime Text中文字符显示为方块
                 </a>
-              </span>
-
               
-              
-
             
-          </span>
+          </h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-04-08T22:38:31+08:00" content="2014-04-08">
+              2014-04-08
+            </time>
+          </span>
+
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/" itemprop="commentsCount"></span>
-              </a>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/问题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">问题记录</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
             </span>
           
-        
-      </div>
-    </header>
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
 
     <div class="post-body">
 
@@ -272,13 +318,21 @@
 
       
         
-          <p>在笔记本上使用Sublime Text 3，发现其标签页及命令行中的中文均显示为方块。</p>
-<p>本文记录了该问题的成因及解决方案。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          <span itemprop="articleBody">
+            
+              <p>在笔记本上使用Sublime Text 3，发现其标签页及命令行中的中文均显示为方块。</p>
+<p>本文记录了该问题的成因及解决方案。  </p>
+<h1 id="问题现象">问题现象</h1><hr>
+<p><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/solove-chinese-characters-display-as-squares-in-sublime-text/squares.jpg" alt=""></p>
+<h1 id="问题成因">问题成因</h1><hr>
+<p>开始以为是编码问题导致的中文乱码，但是已经安装了ConvertToUTF8插件，而且编辑框内中文并未乱码，只有标签页和命令行乱码。<br>后经过搜索，发现有人提到如果修改了系统的显示缩放级别，将字体改的太大，则可能造成ST3版本的标签页放不下，进而显示成方块。<br>因为我的电脑是1920*1080的分辨率，系统默认将缩放级别调整为了125%。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/solove-chinese-characters-display-as-squares-in-sublime-text/125%25.jpg" alt=""></p>
+<h1 id="解决方案">解决方案</h1><hr>
+<p>将缩放级别更改为100%后，在ST3中标签页及命令行已经可以正常显示中文了。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/solove-chinese-characters-display-as-squares-in-sublime-text/100%25.jpg" alt=""></p>
+<h1 id="成果展示">成果展示</h1><hr>
+<p><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/solove-chinese-characters-display-as-squares-in-sublime-text/normal.jpg" alt=""></p>
+
+            
+          </span>
         
       
     </div>
@@ -299,45 +353,55 @@
     
       
 
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2014/04/05/use-codeblock-insert-code/" itemprop="url">
+                  使用codeblock插入代码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-04-05T17:13:45+08:00" content="2014-04-05">
+              2014-04-05
+            </time>
+          </span>
+
           
+
           
             
-              <a class="post-title-link" href="/2014/04/05/use-codeblock-insert-code/" itemprop="url">
-                使用codeblock插入代码
-              </a>
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/04/05/use-codeblock-insert-code/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/05/use-codeblock-insert-code/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
-        </h1>
-      
 
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2014-04-05T17:13:45+08:00" content="2014-04-05">
-            2014-04-05
-          </time>
-        </span>
-
-        
-
-        
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/04/05/use-codeblock-insert-code/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/05/use-codeblock-insert-code/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
+
+        </div>
+      </header>
+    
+
 
     <div class="post-body">
 
@@ -346,16 +410,26 @@
 
       
         
-          <p>在测试在博文中插入代码时发现，使用缩进方式插入代码，即使在Hexo的配置文件中将line_number设置为true，代码框上也不会显示行号。<br>如下边这段代码直接使用缩进方式插入：</p>
+          <span itemprop="articleBody">
+            
+              <p>在测试在博文中插入代码时发现，使用缩进方式插入代码，即使在Hexo的配置文件中将line_number设置为true，代码框上也不会显示行号。<br>如下边这段代码直接使用缩进方式插入：</p>
 <pre><code><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>{
     <span class="keyword">return</span> <span class="number">0</span>;
 }
-</code></pre><p>对于如我这般的强迫症患者，想要显示行号时却发现没有行号，自然是百般的不自在，后经过搜索后发现，Markdown还支持显示声明Codeblock的方式插入代码。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/04/05/use-codeblock-insert-code/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+</code></pre><p>对于如我这般的强迫症患者，想要显示行号时却发现没有行号，自然是百般的不自在，后经过搜索后发现，Markdown还支持显示声明Codeblock的方式插入代码。</p>
+<p>其语法如下：</p>
+<pre><code><span class="comment">{% codeblock [title] [lang:language] [url] [link text] %}</span>
+<span class="comment">code snippet</span>
+<span class="comment">{% endcodeblock %}</span>
+</code></pre><p>关于Codeblock在Markdown中使用可以参考<a href="http://hexo.io/docs/tag-plugins.html#Code_Block" target="_blank" rel="external">这里</a>。<br>使用codeblock插入的代码，在Hexo中可正常显示行号，并且可以选择编程语言，增加代码标题，链接等。<br>如下边这段代码使用codeblock方式插入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int main(void) &#123;&#10;    return 0;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong> 参考文献： </strong></p>
+<ul>
+<li><a href="http://popozhu.github.io/2013/06/15/hexo%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" target="_blank" rel="external">hexo的代码高亮</a></li>
+</ul>
+
+            
+          </span>
         
       
     </div>
@@ -376,60 +450,70 @@
     
       
 
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/04/03/independent-blog-tour/" itemprop="url">
-                独立博客之旅
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2014-04-03T13:19:15+08:00" content="2014-04-03">
-            2014-04-03
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/随笔/" itemprop="url" rel="index">
-                  <span itemprop="name">随笔</span>
+            
+              
+                <a class="post-title-link" href="/2014/04/03/independent-blog-tour/" itemprop="url">
+                  独立博客之旅
                 </a>
-              </span>
-
               
-              
-
             
-          </span>
+          </h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-04-03T13:19:15+08:00" content="2014-04-03">
+              2014-04-03
+            </time>
+          </span>
+
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/04/03/independent-blog-tour/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/03/independent-blog-tour/" itemprop="commentsCount"></span>
-              </a>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
             </span>
           
-        
-      </div>
-    </header>
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/04/03/independent-blog-tour/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/03/independent-blog-tour/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
 
     <div class="post-body">
 
@@ -438,13 +522,17 @@
 
       
         
-          <span itemprop="articleBody"><p>一直以来没有写博客的习惯，发现很多问题在解决之后由于没有及时记录和总结，导致再次遇到时仍然无法解决，从而陷入了死循环中。遂决心开博客写文章，记录及总结近来遇到的问题及产生的想法。</p>
+          <span itemprop="articleBody">
+            
+              <p>一直以来没有写博客的习惯，发现很多问题在解决之后由于没有及时记录和总结，导致再次遇到时仍然无法解决，从而陷入了死循环中。遂决心开博客写文章，记录及总结近来遇到的问题及产生的想法。</p>
 <p><strong> Hexo博客配置参考： </strong></p>
 <ul>
 <li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></li>
 <li><a href="http://kescoode.com/2013/11/17/github-page-and-hexo-guide/" target="_blank" rel="external">Github Pages与Hexo建个人博客流程 </a></li>
 </ul>
-</span>
+
+            
+          </span>
         
       
     </div>
@@ -467,17 +555,20 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
- </div>
 
+
+          </div>
+
+          
+
+          
+
+        </div>
         
-
-        
-      </div>
-
-      
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -535,38 +626,27 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://smvirus.com" target="_blank">HomePage</a>
+                <a href="http://smvirus.com" target="_blank">
+                  <i class="fa fa-home"></i> Home
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.github.com/luoxiaohei" target="_blank">GitHub</a>
+                <a href="https://www.github.com/luoxiaohei" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/lshang" target="_blank">Weibo</a>
+                <a href="http://weibo.com/lshang" target="_blank">
+                  <i class="fa fa-weibo"></i> Weibo
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">Mail</a>
-              </span>
-            
-          
-        </div>
-
-        <div class="links-of-author motion-element">
-          
-            <p class="site-links-title">His friends</p>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">
+                  <i class="fa fa-mail"></i> Mail
+                </a>
               </span>
             
           
@@ -581,6 +661,25 @@
           </div>
         
 
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">His friends</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
+              </span>
+            
+          
+        </div>
+
       </section>
 
       
@@ -589,15 +688,17 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp;  2014 - 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lSHANG</span>
 </div>
@@ -609,7 +710,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -633,7 +734,7 @@
   
   
   
-  
+    
 
   
     
@@ -644,6 +745,7 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
@@ -652,27 +754,28 @@
   </script>
     
      
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
 
-  
 
+    
+  
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
 
 
 
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
@@ -681,37 +784,27 @@
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
       }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      // TODO: Isolate Scheme-oriented scripts.
+      if (isPisces()) {
+        var $sidebar = $('#sidebar');
+        var headerHeight = $('.header-inner').height();
+        $sidebar
+          .css({ 'margin-top': headerHeight + 10 })
+          .show();
+      }
+
+      motionIntegrator.bootstrap();
     });
   </script>
 
   
-
-  
   
 
   
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"smVirus"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
-
-  
-
   
 
   

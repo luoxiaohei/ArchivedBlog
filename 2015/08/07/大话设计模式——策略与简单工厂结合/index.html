@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html class="theme-next use-motion theme-next-pisces">
 <head>
   
 
@@ -18,12 +18,20 @@
 
 
 
+
+
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
 
 
     <meta name="description" content="永远年轻，永远热泪盈眶！" />
@@ -38,28 +46,36 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="策略模式和简单工厂模式相结合，是通过将策略模式中由客户端承担的选择具体实现的职责转移到Context类中以减轻客户端职责，降低程序耦合度。">
+<meta name="description" content="策略模式和简单工厂模式相结合，是通过将策略模式中由客户端承担的选择具体实现的职责转移到Context类中以减轻客户端职责，降低程序耦合度。
+优势降低了客户端和算法之间的耦合度。
+劣势在Context类中仍需实现选择具体实现的判断。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大话设计模式——策略与简单工厂结合">
 <meta property="og:url" content="http://blog.smvirus.com/2015/08/07/大话设计模式——策略与简单工厂结合/index.html">
 <meta property="og:site_name" content="lShang's Blog">
-<meta property="og:description" content="策略模式和简单工厂模式相结合，是通过将策略模式中由客户端承担的选择具体实现的职责转移到Context类中以减轻客户端职责，降低程序耦合度。">
+<meta property="og:description" content="策略模式和简单工厂模式相结合，是通过将策略模式中由客户端承担的选择具体实现的职责转移到Context类中以减轻客户端职责，降低程序耦合度。
+优势降低了客户端和算法之间的耦合度。
+劣势在Context类中仍需实现选择具体实现的判断。">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/大话设计模式——策略与简单工厂结合/Cash.jpg">
-<meta property="og:updated_time" content="2015-08-06T16:56:36.000Z">
+<meta property="og:updated_time" content="2015-10-21T17:24:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大话设计模式——策略与简单工厂结合">
-<meta name="twitter:description" content="策略模式和简单工厂模式相结合，是通过将策略模式中由客户端承担的选择具体实现的职责转移到Context类中以减轻客户端职责，降低程序耦合度。">
+<meta name="twitter:description" content="策略模式和简单工厂模式相结合，是通过将策略模式中由客户端承担的选择具体实现的职责转移到Context类中以减轻客户端职责，降低程序耦合度。
+优势降低了客户端和算法之间的耦合度。
+劣势在Context类中仍需实现选择具体实现的判断。">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post'
   };
 </script>
+
+
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -79,6 +95,8 @@
   </div>
 <![endif]-->
   
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -101,20 +119,23 @@
 
 
 
+
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">lShang's Blog</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -133,7 +154,9 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
             首页
           </a>
         </li>
@@ -141,7 +164,9 @@
         
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
             分类
           </a>
         </li>
@@ -149,7 +174,9 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
             归档
           </a>
         </li>
@@ -157,7 +184,9 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
             标签
           </a>
         </li>
@@ -165,13 +194,24 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
             关于
           </a>
         </li>
       
 
       
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search icon-next-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
       
     </ul>
   
@@ -205,63 +245,75 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              大话设计模式——策略与简单工厂结合
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-07T00:06:26+08:00" content="2015-08-07">
-            2015-08-07
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                  <span itemprop="name">读书笔记</span>
-                </a>
-              </span>
-
-              
-              
-
             
+              
+                大话设计模式——策略与简单工厂结合
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-08-07T00:06:26+08:00" content="2015-08-07">
+              2015-08-07
+            </time>
           </span>
-        
 
-        
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/08/07/大话设计模式——策略与简单工厂结合/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/07/大话设计模式——策略与简单工厂结合/" itemprop="commentsCount"></span>
-              </a>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
             </span>
           
-        
-      </div>
-    </header>
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/07/大话设计模式——策略与简单工厂结合/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/07/大话设计模式——策略与简单工厂结合/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
 
     <div class="post-body">
 
@@ -269,13 +321,13 @@
       
 
       
-        <span itemprop="articleBody"><p>策略模式和简单工厂模式相结合，是通过将策略模式中由客户端承担的选择具体实现的职责转移到Context类中以减轻客户端职责，降低程序耦合度。<br><a id="more"></a></p>
-<p>#优势<br>降低了客户端和算法之间的耦合度。</p>
-<p>#劣势<br>在Context类中仍需实现选择具体实现的判断。</p>
-<p>#程序示例<br>商场收银软件，可以根据不同销售策略进行收费。</p>
-<p>##UML类图<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/大话设计模式——策略与简单工厂结合/Cash.jpg" alt=""></p>
-<p>##Python代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashSuper</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">acceptCash</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashNormal</span><span class="params">(CashSuper)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">acceptCash</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> money</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashRebate</span><span class="params">(CashSuper)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, moneyRebate)</span>:</span></span><br><span class="line">        self.moneyRebate = moneyRebate</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">acceptCash</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> money * self.moneyRebate</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashReturn</span><span class="params">(CashSuper)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, moneyCondition, moneyReturn)</span>:</span></span><br><span class="line">        self.moneyCondition = moneyCondition</span><br><span class="line">        self.moneyReturn = moneyReturn</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">acceptCash</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        result = money</span><br><span class="line">        <span class="keyword">if</span> money &gt;= self.moneyCondition:</span><br><span class="line">            result = money - (int(money / self.moneyCondition) * self.moneyReturn)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashContext</span>:</span></span><br><span class="line">    stratey = &#123;&#125;</span><br><span class="line">    stratey[<span class="number">1</span>] = CashNormal()</span><br><span class="line">    stratey[<span class="number">2</span>] = CashRebate(<span class="number">0.8</span>)</span><br><span class="line">    stratey[<span class="number">3</span>] = CashReturn(<span class="number">300</span>, <span class="number">100</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, cashType)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> cashType <span class="keyword">in</span> self.stratey:</span><br><span class="line">            self.cs = self.stratey[cashType]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">'cashType error.'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.cs.acceptCash(money)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    money = input(<span class="string">u'Money: '</span>)</span><br><span class="line">    repeat = <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">while</span> repeat <span class="keyword">is</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            cashType = input(<span class="string">u'1. Normal.\n2. Discount of twenty percent.\n3. Per more than $300 cashback $100.\nPay type: '</span>)</span><br><span class="line">            csuper = CashContext(cashType)</span><br><span class="line">            <span class="keyword">print</span> <span class="string">u'Amount Paid: %.2f'</span> % csuper.GetResult(money)</span><br><span class="line">            repeat = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'\nPay type error.\n'</span></span><br></pre></td></tr></table></figure></p>
-</span>
+        <span itemprop="articleBody"><p>策略模式和简单工厂模式相结合，是通过将策略模式中由客户端承担的选择具体实现的职责转移到Context类中以减轻客户端职责，降低程序耦合度。</p>
+<h1 id="优势">优势</h1><p>降低了客户端和算法之间的耦合度。</p>
+<h1 id="劣势">劣势</h1><p>在Context类中仍需实现选择具体实现的判断。</p>
+<a id="more"></a>
+<h1 id="程序示例">程序示例</h1><p>商场收银软件，可以根据不同销售策略进行收费。</p>
+<h2 id="UML类图">UML类图</h2><p><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/大话设计模式——策略与简单工厂结合/Cash.jpg" alt=""></p>
+<h2 id="Python代码">Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashSuper</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">acceptCash</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashNormal</span><span class="params">(CashSuper)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">acceptCash</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> money</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashRebate</span><span class="params">(CashSuper)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, moneyRebate)</span>:</span></span><br><span class="line">        self.moneyRebate = moneyRebate</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">acceptCash</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> money * self.moneyRebate</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashReturn</span><span class="params">(CashSuper)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, moneyCondition, moneyReturn)</span>:</span></span><br><span class="line">        self.moneyCondition = moneyCondition</span><br><span class="line">        self.moneyReturn = moneyReturn</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">acceptCash</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        result = money</span><br><span class="line">        <span class="keyword">if</span> money &gt;= self.moneyCondition:</span><br><span class="line">            result = money - (int(money / self.moneyCondition) * self.moneyReturn)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CashContext</span>:</span></span><br><span class="line">    stratey = &#123;&#125;</span><br><span class="line">    stratey[<span class="number">1</span>] = CashNormal()</span><br><span class="line">    stratey[<span class="number">2</span>] = CashRebate(<span class="number">0.8</span>)</span><br><span class="line">    stratey[<span class="number">3</span>] = CashReturn(<span class="number">300</span>, <span class="number">100</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, cashType)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> cashType <span class="keyword">in</span> self.stratey:</span><br><span class="line">            self.cs = self.stratey[cashType]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">'cashType error.'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">GetResult</span><span class="params">(self, money)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.cs.acceptCash(money)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    money = input(<span class="string">u'Money: '</span>)</span><br><span class="line">    repeat = <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">while</span> repeat <span class="keyword">is</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            cashType = input(<span class="string">u'1. Normal.\n2. Discount of twenty percent.\n3. Per more than $300 cashback $100.\nPay type: '</span>)</span><br><span class="line">            csuper = CashContext(cashType)</span><br><span class="line">            <span class="keyword">print</span> <span class="string">u'Amount Paid: %.2f'</span> % csuper.GetResult(money)</span><br><span class="line">            repeat = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">'\nPay type error.\n'</span></span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -292,13 +344,15 @@
 
       
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/05/大话设计模式——策略模式/" rel="next" title="大话设计模式——策略模式">
+                <i class="fa fa-chevron-left"></i> 大话设计模式——策略模式
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/08/05/大话设计模式——策略模式/" rel="next">大话设计模式——策略模式</a>
+          <div class="post-nav-prev post-nav-item">
             
           </div>
         </div>
@@ -316,22 +370,24 @@
     </div>
   </div>
 
- </div>
 
-        
-
-        
-          <div class="comments" id="comments">
-            
-              <div class="ds-thread" data-thread-key="2015/08/07/大话设计模式——策略与简单工厂结合/"
-                   data-title="大话设计模式——策略与简单工厂结合" data-url="http://blog.smvirus.com/2015/08/07/大话设计模式——策略与简单工厂结合/">
-              </div>
-            
           </div>
-        
-      </div>
 
-      
+          
+
+          
+            <div class="comments" id="comments">
+              
+                <div class="ds-thread" data-thread-key="2015/08/07/大话设计模式——策略与简单工厂结合/"
+                     data-title="大话设计模式——策略与简单工厂结合" data-url="http://blog.smvirus.com/2015/08/07/大话设计模式——策略与简单工厂结合/">
+                </div>
+              
+            </div>
+          
+
+        </div>
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -398,38 +454,27 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://smvirus.com" target="_blank">HomePage</a>
+                <a href="http://smvirus.com" target="_blank">
+                  <i class="fa fa-home"></i> Home
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.github.com/luoxiaohei" target="_blank">GitHub</a>
+                <a href="https://www.github.com/luoxiaohei" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/lshang" target="_blank">Weibo</a>
+                <a href="http://weibo.com/lshang" target="_blank">
+                  <i class="fa fa-weibo"></i> Weibo
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">Mail</a>
-              </span>
-            
-          
-        </div>
-
-        <div class="links-of-author motion-element">
-          
-            <p class="site-links-title">His friends</p>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">
+                  <i class="fa fa-mail"></i> Mail
+                </a>
               </span>
             
           
@@ -444,15 +489,34 @@
           </div>
         
 
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">His friends</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
+              </span>
+            
+          
+        </div>
+
       </section>
 
       
-        <section class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#优势"><span class="nav-text">优势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#劣势"><span class="nav-text">劣势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程序示例"><span class="nav-text">程序示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UML类图"><span class="nav-text">UML类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python代码"><span class="nav-text">Python代码</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -463,15 +527,17 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp;  2014 - 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lSHANG</span>
 </div>
@@ -483,7 +549,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -518,6 +584,7 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
@@ -526,31 +593,32 @@
   </script>
     
      
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
+
 
     
   
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
 
 
 
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -714,9 +782,24 @@
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
       }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      // TODO: Isolate Scheme-oriented scripts.
+      if (isPisces()) {
+        var $sidebar = $('#sidebar');
+        var headerHeight = $('.header-inner').height();
+        $sidebar
+          .css({ 'margin-top': headerHeight + 10 })
+          .show();
+      }
+
+      motionIntegrator.bootstrap();
     });
   </script>
 
+  
   
 
   

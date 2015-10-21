@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html class="theme-next use-motion theme-next-pisces">
 <head>
   
 
@@ -18,12 +18,20 @@
 
 
 
+
+
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
 
 
     <meta name="description" content="永远年轻，永远热泪盈眶！" />
@@ -38,29 +46,34 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。本文记录了解决该问题的方法。">
+<meta name="description" content="最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。本文记录了解决该问题的方法。
+问题现象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决Calibre转换的.azw3文件在Kindle中取词错误">
 <meta property="og:url" content="http://blog.smvirus.com/2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/index.html">
 <meta property="og:site_name" content="lShang's Blog">
-<meta property="og:description" content="最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。本文记录了解决该问题的方法。">
+<meta property="og:description" content="最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。本文记录了解决该问题的方法。
+问题现象">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/error.png">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/normal.png">
-<meta property="og:updated_time" content="2015-08-02T19:05:51.000Z">
+<meta property="og:updated_time" content="2015-10-21T17:21:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决Calibre转换的.azw3文件在Kindle中取词错误">
-<meta name="twitter:description" content="最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。本文记录了解决该问题的方法。">
+<meta name="twitter:description" content="最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。本文记录了解决该问题的方法。
+问题现象">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post'
   };
 </script>
+
+
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -80,6 +93,8 @@
   </div>
 <![endif]-->
   
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -102,20 +117,23 @@
 
 
 
+
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">lShang's Blog</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -134,7 +152,9 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
             首页
           </a>
         </li>
@@ -142,7 +162,9 @@
         
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
             分类
           </a>
         </li>
@@ -150,7 +172,9 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
             归档
           </a>
         </li>
@@ -158,7 +182,9 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
             标签
           </a>
         </li>
@@ -166,13 +192,24 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
             关于
           </a>
         </li>
       
 
       
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search icon-next-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
       
     </ul>
   
@@ -206,63 +243,75 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              解决Calibre转换的.azw3文件在Kindle中取词错误
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-07-05T02:04:52+08:00" content="2015-07-05">
-            2015-07-05
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/问题记录/" itemprop="url" rel="index">
-                  <span itemprop="name">问题记录</span>
-                </a>
-              </span>
-
-              
-              
-
             
+              
+                解决Calibre转换的.azw3文件在Kindle中取词错误
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-07-05T02:04:52+08:00" content="2015-07-05">
+              2015-07-05
+            </time>
           </span>
-        
 
-        
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/" itemprop="commentsCount"></span>
-              </a>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/问题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">问题记录</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
             </span>
           
-        
-      </div>
-    </header>
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
 
     <div class="post-body">
 
@@ -270,14 +319,18 @@
       
 
       
-        <span itemprop="articleBody"><p>最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。<br>本文记录了解决该问题的方法。<br><a id="more"></a></p>
-<p>##问题现象<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/error.png" alt=""></p>
-<p>##解决思路<br>发现该问题时第一反应是认为Calibre的设置不对，但在多次更改转换参数后始终未能解决该问题，后来发现一些无损mobi在推送到Amazon云端的时候，Amazon的服务器会将其中的KF8格式文件从中提取出来重新生成azw3文件，并且该azw3文件在Kindle中阅读时对中文取词并不会出现问题，于是便有了解决该问题的思路。</p>
-<p>##解决方案</p>
-<p>###将azw3文件无损转换为mobi文件<br>转换方法可参考以下文章<br><a href="http://kindlefere.com/post/102.html" target="_blank" rel="external">[将 azw3 格式转换为 mobi 格式并保持原有排版格式]</a><br>或使用以下工具进行转换<br><a href="http://yun.baidu.com/s/1o6r76GU" target="_blank" rel="external">[无损转换为mobi]</a></p>
-<p>###将mobi格式推送到Amazon云端服务器<br>可直接使用Amazon注册邮箱发送至Kindle邮箱，然后等待Amazon服务器将推送的mobi文件提取转换为azw3文件。</p>
-<p>###下载并阅读转换后的文件<br>当Amazon完成转换后，会自动将书籍同步到Kindle中，但是Amazon服务器生成的azw3文件会带有PDOC标签，在阅读器中会显示为个人文档，且不会显示封面，有强迫症的同学可自行从Amazon的云端下载转换后的文件进行编辑，然后再次通过Calibre发送到设备即可。</p>
-<p>##成果展示<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/normal.png" alt=""></p>
+        <span itemprop="articleBody"><p>最近购买了Amazon新版的Kindle PaperWhite阅读器，在使用时发现azw3格式的电子书排版要比mobi格式更加精致，于是将已有的mobi电子书转换成了azw3格式，但发现通过Calibre转换的azw3格式电子书在Kindle中阅读时对中文的取词会出现问题，具体表现为长按取词时会选中整句。<br>本文记录了解决该问题的方法。</p>
+<h1 id="问题现象">问题现象</h1><hr>
+<p><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/error.png" alt=""></p>
+<a id="more"></a>
+<h1 id="解决思路">解决思路</h1><hr>
+<p>发现该问题时第一反应是认为Calibre的设置不对，但在多次更改转换参数后始终未能解决该问题，后来发现一些无损mobi在推送到Amazon云端的时候，Amazon的服务器会将其中的KF8格式文件从中提取出来重新生成azw3文件，并且该azw3文件在Kindle中阅读时对中文取词并不会出现问题，于是便有了解决该问题的思路。</p>
+<h1 id="解决方案">解决方案</h1><hr>
+<h2 id="将azw3文件无损转换为mobi文件">将azw3文件无损转换为mobi文件</h2><p>转换方法可参考以下文章<br><a href="http://kindlefere.com/post/102.html" target="_blank" rel="external">[将 azw3 格式转换为 mobi 格式并保持原有排版格式]</a><br>或使用以下工具进行转换<br><a href="http://yun.baidu.com/s/1o6r76GU" target="_blank" rel="external">[无损转换为mobi]</a></p>
+<h2 id="将mobi格式推送到Amazon云端服务器">将mobi格式推送到Amazon云端服务器</h2><p>可直接使用Amazon注册邮箱发送至Kindle邮箱，然后等待Amazon服务器将推送的mobi文件提取转换为azw3文件。</p>
+<h2 id="下载并阅读转换后的文件">下载并阅读转换后的文件</h2><p>当Amazon完成转换后，会自动将书籍同步到Kindle中，但是Amazon服务器生成的azw3文件会带有PDOC标签，在阅读器中会显示为个人文档，且不会显示封面，有强迫症的同学可自行从Amazon的云端下载转换后的文件进行编辑，然后再次通过Calibre发送到设备即可。</p>
+<h1 id="成果展示">成果展示</h1><hr>
+<p><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/normal.png" alt=""></p>
 </span>
       
     </div>
@@ -293,15 +346,19 @@
 
       
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/29/大话设计模式——简单工厂模式/" rel="prev">大话设计模式——简单工厂模式</a>
+              <a href="/2015/05/20/decompiling-compiled-autoit-scripts-64bit/" rel="next" title="反编译64位AutoIt程序">
+                <i class="fa fa-chevron-left"></i> 反编译64位AutoIt程序
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
+          <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/05/20/decompiling-compiled-autoit-scripts-64bit/" rel="next">反编译64位AutoIt程序</a>
+              <a href="/2015/07/29/大话设计模式——简单工厂模式/" rel="prev" title="大话设计模式——简单工厂模式">
+                大话设计模式——简单工厂模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -319,22 +376,24 @@
     </div>
   </div>
 
- </div>
 
-        
-
-        
-          <div class="comments" id="comments">
-            
-              <div class="ds-thread" data-thread-key="2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/"
-                   data-title="解决Calibre转换的.azw3文件在Kindle中取词错误" data-url="http://blog.smvirus.com/2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/">
-              </div>
-            
           </div>
-        
-      </div>
 
-      
+          
+
+          
+            <div class="comments" id="comments">
+              
+                <div class="ds-thread" data-thread-key="2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/"
+                     data-title="解决Calibre转换的.azw3文件在Kindle中取词错误" data-url="http://blog.smvirus.com/2015/07/05/solve-the-calibre-conversion-azw3-files-use-dictionary-error-in-the-kindle-paperwhite/">
+                </div>
+              
+            </div>
+          
+
+        </div>
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -401,38 +460,27 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://smvirus.com" target="_blank">HomePage</a>
+                <a href="http://smvirus.com" target="_blank">
+                  <i class="fa fa-home"></i> Home
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.github.com/luoxiaohei" target="_blank">GitHub</a>
+                <a href="https://www.github.com/luoxiaohei" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/lshang" target="_blank">Weibo</a>
+                <a href="http://weibo.com/lshang" target="_blank">
+                  <i class="fa fa-weibo"></i> Weibo
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">Mail</a>
-              </span>
-            
-          
-        </div>
-
-        <div class="links-of-author motion-element">
-          
-            <p class="site-links-title">His friends</p>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">
+                  <i class="fa fa-mail"></i> Mail
+                </a>
               </span>
             
           
@@ -447,15 +495,34 @@
           </div>
         
 
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">His friends</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
+              </span>
+            
+          
+        </div>
+
       </section>
 
       
-        <section class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题现象"><span class="nav-text">问题现象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决思路"><span class="nav-text">解决思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将azw3文件无损转换为mobi文件"><span class="nav-text">将azw3文件无损转换为mobi文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将mobi格式推送到Amazon云端服务器"><span class="nav-text">将mobi格式推送到Amazon云端服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载并阅读转换后的文件"><span class="nav-text">下载并阅读转换后的文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#成果展示"><span class="nav-text">成果展示</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -466,15 +533,17 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp;  2014 - 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lSHANG</span>
 </div>
@@ -486,7 +555,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -521,6 +590,7 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
@@ -529,31 +599,32 @@
   </script>
     
      
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
+
 
     
   
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
 
 
 
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -717,9 +788,24 @@
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
       }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      // TODO: Isolate Scheme-oriented scripts.
+      if (isPisces()) {
+        var $sidebar = $('#sidebar');
+        var headerHeight = $('.header-inner').height();
+        $sidebar
+          .css({ 'margin-top': headerHeight + 10 })
+          .show();
+      }
+
+      motionIntegrator.bootstrap();
     });
   </script>
 
+  
   
 
   

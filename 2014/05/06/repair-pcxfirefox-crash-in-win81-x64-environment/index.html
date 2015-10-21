@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html class="theme-next use-motion theme-next-pisces">
 <head>
   
 
@@ -18,12 +18,20 @@
 
 
 
+
+
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
 
 
     <meta name="description" content="永远年轻，永远热泪盈眶！" />
@@ -38,17 +46,19 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
 <meta name="description" content="最近在使用PcxFirefox浏览器时，发现其x64版本在Win8.1系统中一旦触发文件选择框，如下载/打开文件时，浏览器就会崩溃。
-在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。">
+在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。
+问题现象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修复Win8.1 x64环境下PcxFirefox打开文件崩溃">
 <meta property="og:url" content="http://blog.smvirus.com/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/index.html">
 <meta property="og:site_name" content="lShang's Blog">
 <meta property="og:description" content="最近在使用PcxFirefox浏览器时，发现其x64版本在Win8.1系统中一旦触发文件选择框，如下载/打开文件时，浏览器就会崩溃。
-在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。">
+在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。
+问题现象">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/crash.jpg">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/windbg_crash.jpg">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-rip.jpg">
@@ -60,19 +70,22 @@
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-hook.jpg">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/fix-hook.jpg">
 <meta property="og:image" content="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/is-ok.jpg">
-<meta property="og:updated_time" content="2015-05-21T12:36:15.000Z">
+<meta property="og:updated_time" content="2015-10-21T17:22:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修复Win8.1 x64环境下PcxFirefox打开文件崩溃">
 <meta name="twitter:description" content="最近在使用PcxFirefox浏览器时，发现其x64版本在Win8.1系统中一旦触发文件选择框，如下载/打开文件时，浏览器就会崩溃。
-在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。">
+在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。
+问题现象">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post'
   };
 </script>
+
+
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -92,6 +105,8 @@
   </div>
 <![endif]-->
   
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -114,20 +129,23 @@
 
 
 
+
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">lShang's Blog</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -146,7 +164,9 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
             首页
           </a>
         </li>
@@ -154,7 +174,9 @@
         
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
             分类
           </a>
         </li>
@@ -162,7 +184,9 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
             归档
           </a>
         </li>
@@ -170,7 +194,9 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
             标签
           </a>
         </li>
@@ -178,13 +204,24 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
             关于
           </a>
         </li>
       
 
       
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search icon-next-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
       
     </ul>
   
@@ -218,63 +255,75 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              修复Win8.1 x64环境下PcxFirefox打开文件崩溃
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2014-05-06T19:19:46+08:00" content="2014-05-06">
-            2014-05-06
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/调试逆向/" itemprop="url" rel="index">
-                  <span itemprop="name">调试逆向</span>
-                </a>
-              </span>
-
-              
-              
-
             
+              
+                修复Win8.1 x64环境下PcxFirefox打开文件崩溃
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-05-06T19:19:46+08:00" content="2014-05-06">
+              2014-05-06
+            </time>
           </span>
-        
 
-        
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/" itemprop="commentsCount"></span>
-              </a>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/调试逆向/" itemprop="url" rel="index">
+                    <span itemprop="name">调试逆向</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
             </span>
           
-        
-      </div>
-    </header>
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
 
     <div class="post-body">
 
@@ -283,15 +332,17 @@
 
       
         <span itemprop="articleBody"><p>最近在使用PcxFirefox浏览器时，发现其x64版本在Win8.1系统中一旦触发文件选择框，如下载/打开文件时，浏览器就会崩溃。</p>
-<p>在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。<br><a id="more"></a></p>
-<p>##问题现象<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/crash.jpg" alt=""></p>
-<p>##问题定位</p>
-<p>###捕获异常<br>首先使用Windbg重新加载崩溃程序Firefox.exe，然后执行g命令执行程序并触发崩溃，Windbg捕获到如下异常<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/windbg_crash.jpg" alt=""><br>得知错误代码出现在<code>00007ffa&#39;5bbab9fd</code>，在当前地址反汇编得到如下代码<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-rip.jpg" alt=""></p>
-<p>###定位异常模块<br>查看当前出错模块路径如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0:000&#62; lmf a rip&#10;start             end                 module name&#10;00007ffa`5b9f0000 00007ffa`5ce07000   SHELL32  C:\windows\system32\SHELL32.dll</span><br></pre></td></tr></table></figure></p>
-<p>###分析异常代码<br>使用IDA Pro反汇编该模块后，发现该地址原始反汇编代码如下，与正在执行代码不同<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-code.jpg" alt=""><br>向前遍历发现，模块中代码从<code>00007ffa&#39;5bbab9f0</code>处开始被覆写了14字节<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-b9f0.jpg" alt=""><br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-b9f0.jpg" alt=""></p>
-<p>###确认异常原因<br>从上图代码可知，该地址为SHGetSpecialFolderPathW函数地址，对比代码可知，该函数被inline hook。<br>进而可以确认崩溃原因是hook过程中将<code>00007ffa&#39;5bbab9fd</code>处一字节覆盖为0，导致cpu解释指令出错，产生异常并引起崩溃。<br>在Windbg中将其修正为48h后恢复进程执行，文件选择框正常被打开。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/fix-ok.jpg" alt=""></p>
-<p>###定位HOOK来源<br>得知崩溃原因后，下一步开始定位是谁hook了SHGetSpecialFolderPathW函数<br>首先重新加载运行Firefox.exe，然后执行sxe ld:shell32.dll命令使调试器在加载该模块后中断程序<br>中断后对<code>00007ffa&#39;5bbab9f0</code>处下写入断点，然后继续执行程序，发现程序被中断在如下地址<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ba-b9f0.jpg" alt=""><br>查看该地址模块路径如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0:000&#62; lmf a rip&#10;start             end                 module name&#10;00000000`63000000 00000000`6300a000   tmemutil D:\MyTools\Tools\UserSoft\PcxFireFox\tmemutil.dll</span><br></pre></td></tr></table></figure></p>
-<p>###分析HOOK代码<br>使用IDA Pro反汇编该模块后，发现正是该地址上下文代码hook了SHGetSpecialFolderPathW函数<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-hook.jpg" alt=""></p>
+<p>在网上搜索无果后，只好祭出神器Windbg查找原因。在这里对两位帮忙定位问题的同事bianfeng和KeyKernel由衷表示感谢。</p>
+<h1 id="问题现象">问题现象</h1><hr>
+<p><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/crash.jpg" alt=""></p>
+<a id="more"></a>
+<h1 id="问题定位">问题定位</h1><hr>
+<h2 id="捕获异常">捕获异常</h2><p>首先使用Windbg重新加载崩溃程序Firefox.exe，然后执行g命令执行程序并触发崩溃，Windbg捕获到如下异常<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/windbg_crash.jpg" alt=""><br>得知错误代码出现在<code>00007ffa&#39;5bbab9fd</code>，在当前地址反汇编得到如下代码<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-rip.jpg" alt=""></p>
+<h2 id="定位异常模块">定位异常模块</h2><p>查看当前出错模块路径如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0:000&#62; lmf a rip&#10;start             end                 module name&#10;00007ffa`5b9f0000 00007ffa`5ce07000   SHELL32  C:\windows\system32\SHELL32.dll</span><br></pre></td></tr></table></figure></p>
+<h2 id="分析异常代码">分析异常代码</h2><p>使用IDA Pro反汇编该模块后，发现该地址原始反汇编代码如下，与正在执行代码不同<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-code.jpg" alt=""><br>向前遍历发现，模块中代码从<code>00007ffa&#39;5bbab9f0</code>处开始被覆写了14字节<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/u-b9f0.jpg" alt=""><br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-b9f0.jpg" alt=""></p>
+<h2 id="确认异常原因">确认异常原因</h2><p>从上图代码可知，该地址为SHGetSpecialFolderPathW函数地址，对比代码可知，该函数被inline hook。<br>进而可以确认崩溃原因是hook过程中将<code>00007ffa&#39;5bbab9fd</code>处一字节覆盖为0，导致cpu解释指令出错，产生异常并引起崩溃。<br>在Windbg中将其修正为48h后恢复进程执行，文件选择框正常被打开。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/fix-ok.jpg" alt=""></p>
+<h2 id="定位HOOK来源">定位HOOK来源</h2><p>得知崩溃原因后，下一步开始定位是谁hook了SHGetSpecialFolderPathW函数<br>首先重新加载运行Firefox.exe，然后执行sxe ld:shell32.dll命令使调试器在加载该模块后中断程序<br>中断后对<code>00007ffa&#39;5bbab9f0</code>处下写入断点，然后继续执行程序，发现程序被中断在如下地址<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ba-b9f0.jpg" alt=""><br>查看该地址模块路径如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0:000&#62; lmf a rip&#10;start             end                 module name&#10;00000000`63000000 00000000`6300a000   tmemutil D:\MyTools\Tools\UserSoft\PcxFireFox\tmemutil.dll</span><br></pre></td></tr></table></figure></p>
+<h2 id="分析HOOK代码">分析HOOK代码</h2><p>使用IDA Pro反汇编该模块后，发现正是该地址上下文代码hook了SHGetSpecialFolderPathW函数<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/ida-hook.jpg" alt=""></p>
 <p>该段代码是将hook代码写入到SHGetSpecialFolderPathW函数起始处，但因为其使用的跳转方式为</p>
 <blockquote>
 <p>jmp qword ptr [xxxxxxxx]</p>
@@ -301,7 +352,8 @@
 <p>ff 25 00 00 00 00 xx xx xx xx xx xx xx xx</p>
 </blockquote>
 <p>共需14字节。<br>从前文中可知SHGetSpecialFolderPathW函数地址距离之后代码只有13字节，故使用这种跳转方式进行hook，会覆盖掉函数中的代码，进而导致异常，引起崩溃。</p>
-<p>##解决方案<br>因为该问题是由于temeutil模块对SHGetSpecialFolderPathW函数进行hook时使用了错误的跳转方式导致的，故考虑修改其跳转方式。<br>在64位系统下，除上述跳转方式外，还可使用如下方式进行绝对地址跳转</p>
+<h1 id="解决方案">解决方案</h1><hr>
+<p>因为该问题是由于temeutil模块对SHGetSpecialFolderPathW函数进行hook时使用了错误的跳转方式导致的，故考虑修改其跳转方式。<br>在64位系统下，除上述跳转方式外，还可使用如下方式进行绝对地址跳转</p>
 <blockquote>
 <p>mov rax,xxxxxxxx<br>jmp rax</p>
 </blockquote>
@@ -311,8 +363,10 @@
 </blockquote>
 <p>这样仅需覆写12个字节即可完成hook，可以解决掉覆盖正常代码的问题。<br>因为没有找到可以直接patch64位程序的工具（Windbg/IDA Pro的patch功能均不支持带64位寄存器的指令），固只好在IDA Pro中进行Hex修改，然后通过WinHex保存到文件中。<br>修正后的代码如下<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/fix-hook.jpg" alt=""></p>
 <p>需要注意的是，在hook函数内部会首先恢复SHGetSpecialFolderPathW的代码，调用完成后会重新inline hook，故需要对恢复hook的代码进行相同的修改。</p>
-<p>###成果展示<br>完成上述步骤后，用修改后的dll文件替换掉原dll文件，再次测试触发文件选择框时，已可正常打开文件选择框。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/is-ok.jpg" alt=""></p>
-<p>##修正后文件<br>版本：pcxFirefox-28.0-zhCN-vc2010-x64-sse2-betterpgo-140318<br>md5：7b6f5ce613e8d8c9e8b91ca4f6b6cc9039b0a6f5<br>下载：<a href="http://pan.baidu.com/s/1fCfsM" target="_blank" rel="external">temeutil.dll</a></p>
+<h1 id="成果展示">成果展示</h1><hr>
+<p>完成上述步骤后，用修改后的dll文件替换掉原dll文件，再次测试触发文件选择框时，已可正常打开文件选择框。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/repair-pcxfirefox-crash-in-win81-x64-environment/is-ok.jpg" alt=""></p>
+<h1 id="修正后文件">修正后文件</h1><hr>
+<p>版本：pcxFirefox-28.0-zhCN-vc2010-x64-sse2-betterpgo-140318<br>md5：7b6f5ce613e8d8c9e8b91ca4f6b6cc9039b0a6f5<br>下载：<a href="http://pan.baidu.com/s/1fCfsM" target="_blank" rel="external">temeutil.dll</a></p>
 </span>
       
     </div>
@@ -328,15 +382,19 @@
 
       
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/06/19/python-script-written-with-patch/" rel="prev">用Python写Patch脚本</a>
+              <a href="/2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/" rel="next" title="解决Sublime Text中文字符显示为方块">
+                <i class="fa fa-chevron-left"></i> 解决Sublime Text中文字符显示为方块
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
+          <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/04/08/solve-chinese-characters-display-as-squares-in-sublime-text/" rel="next">解决Sublime Text中文字符显示为方块</a>
+              <a href="/2014/06/19/python-script-written-with-patch/" rel="prev" title="用Python写Patch脚本">
+                用Python写Patch脚本 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -354,22 +412,24 @@
     </div>
   </div>
 
- </div>
 
-        
-
-        
-          <div class="comments" id="comments">
-            
-              <div class="ds-thread" data-thread-key="2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/"
-                   data-title="修复Win8.1 x64环境下PcxFirefox打开文件崩溃" data-url="http://blog.smvirus.com/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/">
-              </div>
-            
           </div>
-        
-      </div>
 
-      
+          
+
+          
+            <div class="comments" id="comments">
+              
+                <div class="ds-thread" data-thread-key="2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/"
+                     data-title="修复Win8.1 x64环境下PcxFirefox打开文件崩溃" data-url="http://blog.smvirus.com/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/">
+                </div>
+              
+            </div>
+          
+
+        </div>
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -436,38 +496,27 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://smvirus.com" target="_blank">HomePage</a>
+                <a href="http://smvirus.com" target="_blank">
+                  <i class="fa fa-home"></i> Home
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.github.com/luoxiaohei" target="_blank">GitHub</a>
+                <a href="https://www.github.com/luoxiaohei" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/lshang" target="_blank">Weibo</a>
+                <a href="http://weibo.com/lshang" target="_blank">
+                  <i class="fa fa-weibo"></i> Weibo
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">Mail</a>
-              </span>
-            
-          
-        </div>
-
-        <div class="links-of-author motion-element">
-          
-            <p class="site-links-title">His friends</p>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">
+                  <i class="fa fa-mail"></i> Mail
+                </a>
               </span>
             
           
@@ -482,15 +531,34 @@
           </div>
         
 
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">His friends</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
+              </span>
+            
+          
+        </div>
+
       </section>
 
       
-        <section class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题现象"><span class="nav-text">问题现象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题定位"><span class="nav-text">问题定位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#捕获异常"><span class="nav-text">捕获异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位异常模块"><span class="nav-text">定位异常模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析异常代码"><span class="nav-text">分析异常代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确认异常原因"><span class="nav-text">确认异常原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位HOOK来源"><span class="nav-text">定位HOOK来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析HOOK代码"><span class="nav-text">分析HOOK代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#成果展示"><span class="nav-text">成果展示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修正后文件"><span class="nav-text">修正后文件</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -501,15 +569,17 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp;  2014 - 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lSHANG</span>
 </div>
@@ -521,7 +591,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -556,6 +626,7 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
@@ -564,31 +635,32 @@
   </script>
     
      
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
+
 
     
   
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
 
 
 
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -752,9 +824,24 @@
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
       }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      // TODO: Isolate Scheme-oriented scripts.
+      if (isPisces()) {
+        var $sidebar = $('#sidebar');
+        var headerHeight = $('.header-inner').height();
+        $sidebar
+          .css({ 'margin-top': headerHeight + 10 })
+          .show();
+      }
+
+      motionIntegrator.bootstrap();
     });
   </script>
 
+  
   
 
   

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-mist">
+<html class="theme-next use-motion theme-next-pisces">
 <head>
   
 
@@ -18,12 +18,20 @@
 
 
 
+
+
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
 
 
     <meta name="description" content="永远年轻，永远热泪盈眶！" />
@@ -38,30 +46,38 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.png?v=0.4.5.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
 <meta name="description" content="近日对某家族样本虚拟机检测进行分析，应同事要求，写了个Python脚本用于Patch及Load该家族样本。
-因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。">
+因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。
+获取PE文件版本信息
+该家族样本需特定参数才能运行，且参数信息保存在版本信息中，故需要对样本的版本信息进行解析，进而得到运行参数。Python中没有内置PE解析库，无法直接获取PE文件相关信息，经过搜索在这里发现两种方式解析文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Python写Patch脚本">
 <meta property="og:url" content="http://blog.smvirus.com/2014/06/19/python-script-written-with-patch/index.html">
 <meta property="og:site_name" content="lShang's Blog">
 <meta property="og:description" content="近日对某家族样本虚拟机检测进行分析，应同事要求，写了个Python脚本用于Patch及Load该家族样本。
-因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。">
-<meta property="og:updated_time" content="2015-05-21T12:36:31.000Z">
+因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。
+获取PE文件版本信息
+该家族样本需特定参数才能运行，且参数信息保存在版本信息中，故需要对样本的版本信息进行解析，进而得到运行参数。Python中没有内置PE解析库，无法直接获取PE文件相关信息，经过搜索在这里发现两种方式解析文件">
+<meta property="og:updated_time" content="2015-10-21T17:21:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Python写Patch脚本">
 <meta name="twitter:description" content="近日对某家族样本虚拟机检测进行分析，应同事要求，写了个Python脚本用于Patch及Load该家族样本。
-因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。">
+因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。
+获取PE文件版本信息
+该家族样本需特定参数才能运行，且参数信息保存在版本信息中，故需要对样本的版本信息进行解析，进而得到运行参数。Python中没有内置PE解析库，无法直接获取PE文件相关信息，经过搜索在这里发现两种方式解析文件">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post'
   };
 </script>
+
+
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -81,6 +97,8 @@
   </div>
 <![endif]-->
   
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -103,20 +121,23 @@
 
 
 
+
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
       <span class="site-title">lShang's Blog</span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -135,7 +156,9 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
             首页
           </a>
         </li>
@@ -143,7 +166,9 @@
         
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
-            <i class="menu-item-icon icon-next-categories"></i> <br />
+            
+              <i class="menu-item-icon fa fa-th"></i> <br />
+            
             分类
           </a>
         </li>
@@ -151,7 +176,9 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
             归档
           </a>
         </li>
@@ -159,7 +186,9 @@
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br />
+            
             标签
           </a>
         </li>
@@ -167,13 +196,24 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
             关于
           </a>
         </li>
       
 
       
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search icon-next-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
       
     </ul>
   
@@ -207,63 +247,75 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              用Python写Patch脚本
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2014-06-19T17:15:35+08:00" content="2014-06-19">
-            2014-06-19
-          </time>
-        </span>
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/软件破解/" itemprop="url" rel="index">
-                  <span itemprop="name">软件破解</span>
-                </a>
-              </span>
-
-              
-              
-
             
+              
+                用Python写Patch脚本
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-06-19T17:15:35+08:00" content="2014-06-19">
+              2014-06-19
+            </time>
           </span>
-        
 
-        
           
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/06/19/python-script-written-with-patch/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/19/python-script-written-with-patch/" itemprop="commentsCount"></span>
-              </a>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/软件破解/" itemprop="url" rel="index">
+                    <span itemprop="name">软件破解</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
             </span>
           
-        
-      </div>
-    </header>
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/06/19/python-script-written-with-patch/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/19/python-script-written-with-patch/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
 
     <div class="post-body">
 
@@ -272,10 +324,15 @@
 
       
         <span itemprop="articleBody"><p>近日对某家族样本虚拟机检测进行分析，应同事要求，写了个Python脚本用于Patch及Load该家族样本。</p>
-<p>因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。<br><a id="more"></a></p>
-<p>##获取PE文件版本信息<br>该家族样本需特定参数才能运行，且参数信息保存在版本信息中，故需要对样本的版本信息进行解析，进而得到运行参数。<br>Python中没有内置PE解析库，无法直接获取PE文件相关信息，经过搜索在<a href="http://stackoverflow.com/questions/580924/python-windows-file-version-attribute" target="_blank" rel="external">这里</a>发现两种方式解析文件版本信息。<br>两种方式均需要安装第三方库，分别是PyWin32及pefile库，因为我有安装PyWin32，所以选择了使用PyWin32的方式进行解析。<br>解析版本信息源码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> win32api</span><br><span class="line"></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getFileProperties</span><span class="params">(fname)</span>:</span></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line">    <span class="string">"""</span><br><span class="line">    Read all properties of the given file return them as a dictionary.</span><br><span class="line">    """</span></span><br><span class="line">    propNames = (<span class="string">'Comments'</span>, <span class="string">'InternalName'</span>, <span class="string">'ProductName'</span>,</span><br><span class="line">        <span class="string">'CompanyName'</span>, <span class="string">'LegalCopyright'</span>, <span class="string">'ProductVersion'</span>,</span><br><span class="line">        <span class="string">'FileDescription'</span>, <span class="string">'LegalTrademarks'</span>, <span class="string">'PrivateBuild'</span>,</span><br><span class="line">        <span class="string">'FileVersion'</span>, <span class="string">'OriginalFilename'</span>, <span class="string">'SpecialBuild'</span>)</span><br><span class="line"></span><br><span class="line">    props = &#123;<span class="string">'FixedFileInfo'</span>: <span class="keyword">None</span>, <span class="string">'StringFileInfo'</span>: <span class="keyword">None</span>, <span class="string">'FileVersion'</span>: <span class="keyword">None</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># backslash as parm returns dictionary of numeric info corresponding to VS_FIXEDFILEINFO struc</span></span><br><span class="line">        fixedInfo = win32api.GetFileVersionInfo(fname, <span class="string">'\\'</span>)</span><br><span class="line">        props[<span class="string">'FixedFileInfo'</span>] = fixedInfo</span><br><span class="line">        props[<span class="string">'FileVersion'</span>] = <span class="string">"%d.%d.%d.%d"</span> % (fixedInfo[<span class="string">'FileVersionMS'</span>] / <span class="number">65536</span>,</span><br><span class="line">                fixedInfo[<span class="string">'FileVersionMS'</span>] % <span class="number">65536</span>, fixedInfo[<span class="string">'FileVersionLS'</span>] / <span class="number">65536</span>,</span><br><span class="line">                fixedInfo[<span class="string">'FileVersionLS'</span>] % <span class="number">65536</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># \VarFileInfo\Translation returns list of available (language, codepage)</span></span><br><span class="line">        <span class="comment"># pairs that can be used to retreive string info. We are using only the first pair.</span></span><br><span class="line">        lang, codepage = win32api.GetFileVersionInfo(fname, <span class="string">'\\VarFileInfo\\Translation'</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># any other must be of the form \StringfileInfo\%04X%04X\parm_name, middle</span></span><br><span class="line">        <span class="comment"># two are language/codepage pair returned from above</span></span><br><span class="line"></span><br><span class="line">        strInfo = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> propName <span class="keyword">in</span> propNames:</span><br><span class="line">            strInfoPath = <span class="string">u'\\StringFileInfo\\%04X%04X\\%s'</span> % (lang, codepage, propName)</span><br><span class="line">            <span class="comment">## print str_info</span></span><br><span class="line">            strInfo[propName] = win32api.GetFileVersionInfo(fname, strInfoPath)</span><br><span class="line"></span><br><span class="line">        props[<span class="string">'StringFileInfo'</span>] = strInfo</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> props</span><br></pre></td></tr></table></figure></p>
-<p>##在Python中查找及修改特征码<br>对于Patch文件，我的做法很简单，将要求改的代码的二进制数据提取为特征码，然后将修改后的代码作为Patch码，直接替换掉特征码即完成了Patch。但因为没找到直接替换十六进制串的方法，在查找和修改时遇到了问题。<br>后来发现可以以字符串的方式来完成替换，首先将文件以二进制方式读入，将以字符串形式保存的十六进制串按hex方式解码，完成替换，最后以二进制形式再写入即可。<br>Patch代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">patchFile</span><span class="params">(fin, fout)</span>:</span></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="comment"># patch文件，fin为待patch文件，fout为patch后文件</span></span><br><span class="line">    fdata = open(fin, <span class="string">'rb'</span>).read()</span><br><span class="line">    feature = <span class="string">'0FFD000083C414E8073C000085C074416858DA47006A04'</span>.decode(<span class="string">'hex'</span>)</span><br><span class="line">    patched = <span class="string">'0FFD000083C414E8073C000085C0EB416858DA47006A04'</span>.decode(<span class="string">'hex'</span>)</span><br><span class="line">    pdata = fdata.replace(feature, patched)</span><br><span class="line">    open(fout, <span class="string">'wb'</span>).write(pdata)</span><br></pre></td></tr></table></figure></p>
-<p>##创建临时文件并将其创建为子进程<br>对于Load文件，我的做法是先在临时目录生成一个Patched文件，然后获取到参数后创建一个进程来执行Patched文件，待执行完毕后清理临时文件。<br>因为创建临时文件后需要创建子进程，在创建进程时不可以有进程占有该文件，所以无法使用tempfile.TemporaryFile()函数和tempfile.NamedTemporaryFile()函数。<br>我使用的是tempfile.mkstmp()函数创建临时文件,但在写入完成且关闭文件后，仍无法成功创建进程，错误信息为WindowsError 32，该文件被其他进程占用。<br>搜索后发现除关闭文件外，还需调用os.close()函数，关闭文件描述符，之后可正常创建进程。<br>Loader部分代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadFile</span><span class="params">(fin)</span>:</span></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="comment"># load程序，fin为需要load文件</span></span><br><span class="line">    fd, fout = tempfile.mkstemp(suffix=<span class="string">'.exe'</span>)</span><br><span class="line">    patchFile(fin, fout)</span><br><span class="line">    args = getCommandLine(fin)</span><br><span class="line">    os.close(fd)</span><br><span class="line">    subprocess.call(<span class="string">'%s %s'</span> % (fout, args))</span><br><span class="line">    os.remove(fout)</span><br></pre></td></tr></table></figure></p>
+<p>因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。</p>
+<h1 id="获取PE文件版本信息">获取PE文件版本信息</h1><hr>
+<p>该家族样本需特定参数才能运行，且参数信息保存在版本信息中，故需要对样本的版本信息进行解析，进而得到运行参数。<br>Python中没有内置PE解析库，无法直接获取PE文件相关信息，经过搜索在<a href="http://stackoverflow.com/questions/580924/python-windows-file-version-attribute" target="_blank" rel="external">这里</a>发现两种方式解析文件版本信息。<br>两种方式均需要安装第三方库，分别是PyWin32及pefile库，因为我有安装PyWin32，所以选择了使用PyWin32的方式进行解析。</p>
+<a id="more"></a>
+<p>解析版本信息源码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> win32api</span><br><span class="line"></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getFileProperties</span><span class="params">(fname)</span>:</span></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line">    <span class="string">"""</span><br><span class="line">    Read all properties of the given file return them as a dictionary.</span><br><span class="line">    """</span></span><br><span class="line">    propNames = (<span class="string">'Comments'</span>, <span class="string">'InternalName'</span>, <span class="string">'ProductName'</span>,</span><br><span class="line">        <span class="string">'CompanyName'</span>, <span class="string">'LegalCopyright'</span>, <span class="string">'ProductVersion'</span>,</span><br><span class="line">        <span class="string">'FileDescription'</span>, <span class="string">'LegalTrademarks'</span>, <span class="string">'PrivateBuild'</span>,</span><br><span class="line">        <span class="string">'FileVersion'</span>, <span class="string">'OriginalFilename'</span>, <span class="string">'SpecialBuild'</span>)</span><br><span class="line"></span><br><span class="line">    props = &#123;<span class="string">'FixedFileInfo'</span>: <span class="keyword">None</span>, <span class="string">'StringFileInfo'</span>: <span class="keyword">None</span>, <span class="string">'FileVersion'</span>: <span class="keyword">None</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># backslash as parm returns dictionary of numeric info corresponding to VS_FIXEDFILEINFO struc</span></span><br><span class="line">        fixedInfo = win32api.GetFileVersionInfo(fname, <span class="string">'\\'</span>)</span><br><span class="line">        props[<span class="string">'FixedFileInfo'</span>] = fixedInfo</span><br><span class="line">        props[<span class="string">'FileVersion'</span>] = <span class="string">"%d.%d.%d.%d"</span> % (fixedInfo[<span class="string">'FileVersionMS'</span>] / <span class="number">65536</span>,</span><br><span class="line">                fixedInfo[<span class="string">'FileVersionMS'</span>] % <span class="number">65536</span>, fixedInfo[<span class="string">'FileVersionLS'</span>] / <span class="number">65536</span>,</span><br><span class="line">                fixedInfo[<span class="string">'FileVersionLS'</span>] % <span class="number">65536</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># \VarFileInfo\Translation returns list of available (language, codepage)</span></span><br><span class="line">        <span class="comment"># pairs that can be used to retreive string info. We are using only the first pair.</span></span><br><span class="line">        lang, codepage = win32api.GetFileVersionInfo(fname, <span class="string">'\\VarFileInfo\\Translation'</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># any other must be of the form \StringfileInfo\%04X%04X\parm_name, middle</span></span><br><span class="line">        <span class="comment"># two are language/codepage pair returned from above</span></span><br><span class="line"></span><br><span class="line">        strInfo = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> propName <span class="keyword">in</span> propNames:</span><br><span class="line">            strInfoPath = <span class="string">u'\\StringFileInfo\\%04X%04X\\%s'</span> % (lang, codepage, propName)</span><br><span class="line">            <span class="comment"># print str_info</span></span><br><span class="line">            strInfo[propName] = win32api.GetFileVersionInfo(fname, strInfoPath)</span><br><span class="line"></span><br><span class="line">        props[<span class="string">'StringFileInfo'</span>] = strInfo</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> props</span><br></pre></td></tr></table></figure></p>
+<h1 id="在Python中查找及修改特征码">在Python中查找及修改特征码</h1><hr>
+<p>对于Patch文件，我的做法很简单，将要求改的代码的二进制数据提取为特征码，然后将修改后的代码作为Patch码，直接替换掉特征码即完成了Patch。但因为没找到直接替换十六进制串的方法，在查找和修改时遇到了问题。<br>后来发现可以以字符串的方式来完成替换，首先将文件以二进制方式读入，将以字符串形式保存的十六进制串按hex方式解码，完成替换，最后以二进制形式再写入即可。<br>Patch代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">patchFile</span><span class="params">(fin, fout)</span>:</span></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="comment"># patch文件，fin为待patch文件，fout为patch后文件</span></span><br><span class="line">    fdata = open(fin, <span class="string">'rb'</span>).read()</span><br><span class="line">    feature = <span class="string">'0FFD000083C414E8073C000085C074416858DA47006A04'</span>.decode(<span class="string">'hex'</span>)</span><br><span class="line">    patched = <span class="string">'0FFD000083C414E8073C000085C0EB416858DA47006A04'</span>.decode(<span class="string">'hex'</span>)</span><br><span class="line">    pdata = fdata.replace(feature, patched)</span><br><span class="line">    open(fout, <span class="string">'wb'</span>).write(pdata)</span><br></pre></td></tr></table></figure></p>
+<h1 id="创建临时文件并将其创建为子进程">创建临时文件并将其创建为子进程</h1><hr>
+<p>对于Load文件，我的做法是先在临时目录生成一个Patched文件，然后获取到参数后创建一个进程来执行Patched文件，待执行完毕后清理临时文件。<br>因为创建临时文件后需要创建子进程，在创建进程时不可以有进程占有该文件，所以无法使用tempfile.TemporaryFile()函数和tempfile.NamedTemporaryFile()函数。<br>我使用的是tempfile.mkstmp()函数创建临时文件,但在写入完成且关闭文件后，仍无法成功创建进程，错误信息为WindowsError 32，该文件被其他进程占用。<br>搜索后发现除关闭文件外，还需调用os.close()函数，关闭文件描述符，之后可正常创建进程。<br>Loader部分代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadFile</span><span class="params">(fin)</span>:</span></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="comment"># load程序，fin为需要load文件</span></span><br><span class="line">    fd, fout = tempfile.mkstemp(suffix=<span class="string">'.exe'</span>)</span><br><span class="line">    patchFile(fin, fout)</span><br><span class="line">    args = getCommandLine(fin)</span><br><span class="line">    os.close(fd)</span><br><span class="line">    subprocess.call(<span class="string">'%s %s'</span> % (fout, args))</span><br><span class="line">    os.remove(fout)</span><br></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -293,15 +350,19 @@
 
       
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/14/anie-vbs-worm-code-analysis/" rel="prev">VBS蠕虫 Anie 代码分析</a>
+              <a href="/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/" rel="next" title="修复Win8.1 x64环境下PcxFirefox打开文件崩溃">
+                <i class="fa fa-chevron-left"></i> 修复Win8.1 x64环境下PcxFirefox打开文件崩溃
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
+          <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/" rel="next">修复Win8.1 x64环境下PcxFirefox打开文件崩溃</a>
+              <a href="/2015/03/14/anie-vbs-worm-code-analysis/" rel="prev" title="VBS蠕虫 Anie 代码分析">
+                VBS蠕虫 Anie 代码分析 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -319,22 +380,24 @@
     </div>
   </div>
 
- </div>
 
-        
-
-        
-          <div class="comments" id="comments">
-            
-              <div class="ds-thread" data-thread-key="2014/06/19/python-script-written-with-patch/"
-                   data-title="用Python写Patch脚本" data-url="http://blog.smvirus.com/2014/06/19/python-script-written-with-patch/">
-              </div>
-            
           </div>
-        
-      </div>
 
-      
+          
+
+          
+            <div class="comments" id="comments">
+              
+                <div class="ds-thread" data-thread-key="2014/06/19/python-script-written-with-patch/"
+                     data-title="用Python写Patch脚本" data-url="http://blog.smvirus.com/2014/06/19/python-script-written-with-patch/">
+                </div>
+              
+            </div>
+          
+
+        </div>
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -401,38 +464,27 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://smvirus.com" target="_blank">HomePage</a>
+                <a href="http://smvirus.com" target="_blank">
+                  <i class="fa fa-home"></i> Home
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.github.com/luoxiaohei" target="_blank">GitHub</a>
+                <a href="https://www.github.com/luoxiaohei" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/lshang" target="_blank">Weibo</a>
+                <a href="http://weibo.com/lshang" target="_blank">
+                  <i class="fa fa-weibo"></i> Weibo
+                </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">Mail</a>
-              </span>
-            
-          
-        </div>
-
-        <div class="links-of-author motion-element">
-          
-            <p class="site-links-title">His friends</p>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
-              </span>
-            
-              <span class="links-of-author-item">
-              <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+                <a href="MailTo:Admin@SMVirus.CoM" target="_blank">
+                  <i class="fa fa-mail"></i> Mail
+                </a>
               </span>
             
           
@@ -447,15 +499,34 @@
           </div>
         
 
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">His friends</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.diaosicode.com/" target="_blank">屌丝代码</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.keykernel.org/" target="_blank">Key Kernel</a>
+              </span>
+            
+          
+        </div>
+
       </section>
 
       
-        <section class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取PE文件版本信息"><span class="nav-text">获取PE文件版本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在Python中查找及修改特征码"><span class="nav-text">在Python中查找及修改特征码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建临时文件并将其创建为子进程"><span class="nav-text">创建临时文件并将其创建为子进程</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -466,15 +537,17 @@
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp;  2014 - 
+  &copy;  2014 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lSHANG</span>
 </div>
@@ -486,7 +559,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -521,6 +594,7 @@
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
@@ -529,31 +603,32 @@
   </script>
     
      
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
-  
+
 
     
   
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
 
 
 
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -717,9 +792,24 @@
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
       }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      // TODO: Isolate Scheme-oriented scripts.
+      if (isPisces()) {
+        var $sidebar = $('#sidebar');
+        var headerHeight = $('.header-inner').height();
+        $sidebar
+          .css({ 'margin-top': headerHeight + 10 })
+          .show();
+      }
+
+      motionIntegrator.bootstrap();
     });
   </script>
 
+  
   
 
   
