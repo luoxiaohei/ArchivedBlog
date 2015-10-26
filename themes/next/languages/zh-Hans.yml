@@ -2,6 +2,7 @@ title:
   archive: 归档
   category: 分类
   tag: 标签
+  commonweal: 公益404
 
 menu:
   home: 首页
@@ -20,7 +21,9 @@ sidebar:
 post:
   posted: 发表于
   in: 分类于
+  update: 更新于
   read_more: 阅读全文
+  visitors: 阅读次数
   untitled: 未命名
   toc_empty: 此文章未包含目录
 
@@ -31,7 +34,8 @@ page:
 footer:
   powered: "由 %s 强力驱动"
   theme: 主题
-  busuanzi: "迄今来访 %s 人"
+  busuanzi_pv: "访问 %s 次"
+  busuanzi_uv: "来访 %s 人"
 
 
 

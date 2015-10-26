@@ -81,11 +81,6 @@
   color: $whitesmoke;
 }
 
-.site-links-title {
-  margin-top: -10px;
-  color: rgb(220,220,220);
-}
-
 .site-description {
   margin-top: 5px;
   font-size: 14px;
@@ -100,7 +95,7 @@
 .site-state-item {
   display: inline-block;
   padding: 0 15px;
-  border-left: 1px solid #333;
+  border-left: 1px solid $site-state-item-border-color;
 
   &:first-child {
     border-left: none;
@@ -180,10 +175,11 @@
   display: inline-block;
   cursor: pointer;
   border-bottom: 1px solid transparent;
-  font-size: 15px;
+  font-size: 14px;
+  color: $sidebar-nav-color;
 
   &:hover {
-    color: $whitesmoke;
+    color: $sidebar-nav-hover-color;
   }
 }
 .page-post-detail .sidebar-nav-toc {
@@ -223,9 +219,9 @@
   font-size: 14px;
 
   a {
-    color: $grey-dark;
+    color: $post-toc-color;
     &:hover {
-      color: $grey-light;
+      color: $post-toc-hover-color;
     }
   }
 }

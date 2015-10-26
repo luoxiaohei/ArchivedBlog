@@ -54,7 +54,7 @@
         {% if theme.rss %}
           <div class="feed-link motion-element">
             <a href="{{ url_for(theme.rss) }}" rel="alternate">
-              <i class="menu-item-icon icon-next-feed"></i>
+              <i class="menu-item-icon icon-next-feed fa-fw"></i>
               RSS
             </a>
           </div>
@@ -64,18 +64,9 @@
           {% if theme.social %}
             {% for name, link in theme.social %}
               <span class="links-of-author-item">
-                <a href="{{ link }}" target="_blank">{{ name }}</a>
-              </span>
-            {% endfor %}
-          {% endif %}
-        </div>
-
-        <div class="links-of-author motion-element">
-          {% if theme.links %}
-            <p class="site-links-title">{{ theme.links_title }}</p>
-            {% for name, link in theme.links %}
-              <span class="links-of-author-item">
-              <a href="{{ link }}" target="_blank">{{ name }}</a>
+                <a href="{{ link }}" target="_blank">
+                  <i class="fa fa-{{ name | lower }} fa-fw"></i> {{ name }}
+                </a>
               </span>
             {% endfor %}
           {% endif %}
@@ -90,10 +81,21 @@
           </div>
         {% endif %}
 
+        <div class="links-of-author motion-element">
+          {% if theme.links %}
+            <p class="site-author-name">{{ theme.links_title }}</p>
+            {% for name, link in theme.links %}
+              <span class="links-of-author-item">
+                <a href="{{ link }}" target="_blank">{{ name }}</a>
+              </span>
+            {% endfor %}
+          {% endif %}
+        </div>
+
       </section>
 
       {% if is_post %}
-        <section class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             {% set toc = toc(page.content, {"class": "nav", list_number: theme.toc_list_number}) %}

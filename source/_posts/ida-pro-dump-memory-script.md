@@ -6,17 +6,15 @@ description:
 ---
 使用IDA Pro调试程序时偶尔会遇到dump内存的需求，IDA Pro并没有直接提供内存dump的功能，但可以通过其提供的接口用脚本来实现相关功能。
 
-<!--more-->
-
-#IDC脚本
+# IDC脚本
 ``` c
 auto i,fp;
 fp = fopen("d:\\dump.dex","wb");
-for (i = start_address; end_address; i++)
+for (i = start_address; i <= end_address; i++)
      fputc(Byte(i),fp);
 ```
 
-#IDA Python脚本
+# IDA Python脚本
 ``` python
 import idaapi
 

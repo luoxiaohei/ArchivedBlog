@@ -13,7 +13,7 @@ description:
     }
 
 对于如我这般的强迫症患者，想要显示行号时却发现没有行号，自然是百般的不自在，后经过搜索后发现，Markdown还支持显示声明Codeblock的方式插入代码。
-<!-- more -->
+
 其语法如下：
 
     {% raw %}{% codeblock [title] [lang:language] [url] [link text] %}{% endraw %}

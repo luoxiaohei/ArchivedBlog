@@ -3,6 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 # Site
 title: lShang's Blog
+#subtitle: 
 description: 永远年轻，永远热泪盈眶！
 keywords: "病毒分析,编程,逆向,调试,smVirus,analysis,virus,code,python"
 author: lSHANG
@@ -95,10 +96,10 @@ swiftype_key: dwy-_3DEQHHE923aFCn2
 
 # 社交链接，将在侧栏中显示
 social:
-  HomePage: http://smvirus.com
+  Home: http://smvirus.com
   GitHub: https://www.github.com/luoxiaohei
   Weibo: http://weibo.com/lshang
-  Mail: MailTo:Admin@SMVirus.CoM
+  Envelope: MailTo:Admin@SMVirus.CoM
   # 等等
 
 # 友情链接
@@ -106,8 +107,8 @@ links_title: His friends
 # links
 links:
   吾爱破解: http://www.52pojie.cn/
-  "Key Kernel": http://www.keykernel.org/
   屌丝代码: http://www.diaosicode.com/
+  KeyKernel: http://www.keykernel.org/
 
 # 不蒜子，博客访问计数
 busuanzi: true

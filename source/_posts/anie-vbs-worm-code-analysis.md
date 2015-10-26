@@ -6,8 +6,9 @@ description:
 ---
 Anie 是一个VBS蠕虫，命名源于其会创建一系列名为 Annie 的文件，鉴于计算机病毒命名时不应直接使用病毒样本中出现的字符串，所以将其命名为 Anie。
 该病毒最早出现的时间为2013年，国家为印尼。
-<!-- more -->
-##基本信息
+
+# 基本信息
+***
 >病毒名称：Worm.JS.AutoRun
 >病毒类型：蠕虫
 >样本长度：9,201 字节
@@ -18,17 +19,20 @@ Anie 是一个VBS蠕虫，命名源于其会创建一系列名为 Annie 的文�
 >感染范围：Indonesia
 >感染目标：Intel 386 orlater processors and compatible processors
 
+<!-- more -->
 
-##脚本解密
+# 脚本解密
+***
 直接用编辑器打开病毒样本，会发现样本内容为乱码，该样本使用了jscript.encode方式进行了加密，在[这里](http://www.sanxiang.org/jscript-decode.html)可以对其进行解密。
 ![](http://7xicmh.com1.z0.glb.clouddn.com/blog/anie-vbs-worm-code-analysis/encoded.jpg)
 
-##代码分析
-###免责声明
+# 代码分析
+***
+## 免责声明
 本节代码是一个完整的VBS蠕虫病毒，仅以学习和交流目的展示，其执行后会感染磁盘驱动器、CD刻录机、网络驱动器等，会对系统造成极大破坏。
 请勿复制、传播、执行以及使用本节中代码进行攻击等，否则自行承担一切因不当行为造成的后果及责任。
 
-###病毒代码
+## 病毒代码
 
 {% codeblock %}
 var fso = new ActiveXObject('Scripting.FileSystemObject');

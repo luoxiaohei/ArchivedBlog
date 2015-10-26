@@ -8,31 +8,32 @@ description:
 
 <!-- more -->
 
-##反编译64位AutoIt程序的基本思路
+# 反编译64位AutoIt程序的基本思路
+***
 将64位程序转换为32位，然后执行32位程序的反编译流程。因为AutoIt程序是解释执行的，所以我们可以通过替换解释器的方式来将64位程序转换为32位程序。
 
-##反编译64位AutoIt程序的完整流程
-
-###获取AutoIt解释器
+# 反编译64位AutoIt程序的完整流程
+***
+## 获取AutoIt解释器
 AutoIt的解释器程序为Aut2Exe目录中的AutoItSC.bin文件（新版中解释器已嵌入到Aut2Exe.exe）
 可通过以下链接进行下载v3.3.8.1版本的安装文件并解压获取
 [https://www.autoitscript.com/autoit3/files/archive/autoit/autoit-v3.3.8.1.zip](https://www.autoitscript.com/autoit3/files/archive/autoit/autoit-v3.3.8.1.zip)
 或直接通过以下链接下载
 [http://blog.smvirus.com/blog/2015/05/20/decompiling-compiled-autoit-scripts-64bit/AutoItSC.zip](http://blog.smvirus.com/blog/2015/05/20/decompiling-compiled-autoit-scripts-64bit/AutoItSC.zip)
 
-###提取编译后的AutoIt脚本
+## 提取编译后的AutoIt脚本
 
-####v3.3.8.1之前版本编译
+## v3.3.8.1之前版本编译
 编译后的AutoIt脚本被保存在程序末尾，可以通过特征码来定位到脚本数据
 起始特征码： `A3484BBE986C4AA9994C530A86D6487D`
 结束特征码： `A91CCBDD4155332145413036`
 
-####v3.3.8.1之后版本编译
+## v3.3.8.1之后版本编译
 编译后的AutoIt脚本被保存在资源中，可通过PE资源查看器进行提取或通过上述特征码定位提取
 
 
-###构造32位的AutoIt程序
+## 构造32位的AutoIt程序
 将脚本数据直接追加到AutoItSC.bin文件末尾（v3.3.8.1版本的程序脚本数据存放在程序末尾）并另存为filename.x86.exe就完成了64位到32位AutoIt程序的转换。
 
-###反编译32位AutoIt程序
+## 反编译32位AutoIt程序
 使用exe2aut工具反编译转换后的32位程序，此时得到的源码就是64位AutoIt程序的源码。
