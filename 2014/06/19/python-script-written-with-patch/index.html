@@ -1,15 +1,21 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-pisces">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
   <meta name="google-site-verification" content="6O--eeoQkyybt3zj3XXCwFh4tp4KuMfjMLLuoxFqOFo" />
@@ -20,7 +26,11 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
 
 
 
@@ -29,16 +39,15 @@
   
 
 
-<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-
-    <meta name="description" content="永远年轻，永远热泪盈眶！" />
-
+<link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Patch,Python," />
+
+
 
 
 
@@ -46,7 +55,15 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=0.4.5.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.0.0" />
+
+
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <meta name="description" content="近日对某家族样本虚拟机检测进行分析，应同事要求，写了个Python脚本用于Patch及Load该家族样本。
@@ -70,32 +87,22 @@
 该家族样本需特定参数才能运行，且参数信息保存在版本信息中，故需要对样本的版本信息进行解析，进而得到运行参数。Python中没有内置PE解析库，无法直接获取PE文件相关信息，经过搜索在这里发现两种方式解析文件">
 
 
+
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
-    sidebar: 'post'
+    sidebar: '[object Object]',
+    fancybox: true,
+    motion: true
   };
 </script>
-
-
-
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   <title> 用Python写Patch脚本 | lShang's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -122,7 +129,12 @@
 
 
 
-  <div class="container one-column page-post-detail">
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -136,7 +148,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle"></p>
+  <p class="site-subtitle">I love this world.</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -160,16 +172,6 @@
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
           </a>
         </li>
       
@@ -206,10 +208,11 @@
 
       
       
+      
         <li class="menu-item menu-item-search">
           <a href="#" class="st-search-show-outputs">
             
-              <i class="menu-item-icon fa fa-search icon-next-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -221,11 +224,9 @@
   
     <div class="site-search">
       
-  
   <form class="site-search-form">
-    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-  </form>
-
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
 
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
@@ -257,6 +258,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -276,7 +281,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2014-06-19T17:15:35+08:00" content="2014-06-19">
               2014-06-19
             </time>
@@ -284,7 +292,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/软件破解/" itemprop="url" rel="index">
@@ -311,24 +323,30 @@
           
 
           
+
           
           
-             <span id="/2014/06/19/python-script-written-with-patch/"class="leancloud_visitors"  data-flag-title="用Python写Patch脚本">
-                &nbsp; | &nbsp; 阅读次数
-             </span>
+             <span id="/2014/06/19/python-script-written-with-patch/" class="leancloud_visitors" data-flag-title="用Python写Patch脚本">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><p>近日对某家族样本虚拟机检测进行分析，应同事要求，写了个Python脚本用于Patch及Load该家族样本。</p>
+        <p>近日对某家族样本虚拟机检测进行分析，应同事要求，写了个Python脚本用于Patch及Load该家族样本。</p>
 <p>因之前没有相关经验，在编写过程中遇到一些问题，现将其整理如下。</p>
 <h1 id="获取PE文件版本信息">获取PE文件版本信息</h1><hr>
 <p>该家族样本需特定参数才能运行，且参数信息保存在版本信息中，故需要对样本的版本信息进行解析，进而得到运行参数。<br>Python中没有内置PE解析库，无法直接获取PE文件相关信息，经过搜索在<a href="http://stackoverflow.com/questions/580924/python-windows-file-version-attribute" target="_blank" rel="external">这里</a>发现两种方式解析文件版本信息。<br>两种方式均需要安装第三方库，分别是PyWin32及pefile库，因为我有安装PyWin32，所以选择了使用PyWin32的方式进行解析。</p>
@@ -338,7 +356,7 @@
 <p>对于Patch文件，我的做法很简单，将要求改的代码的二进制数据提取为特征码，然后将修改后的代码作为Patch码，直接替换掉特征码即完成了Patch。但因为没找到直接替换十六进制串的方法，在查找和修改时遇到了问题。<br>后来发现可以以字符串的方式来完成替换，首先将文件以二进制方式读入，将以字符串形式保存的十六进制串按hex方式解码，完成替换，最后以二进制形式再写入即可。<br>Patch代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">patchFile</span><span class="params">(fin, fout)</span>:</span></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="comment"># patch文件，fin为待patch文件，fout为patch后文件</span></span><br><span class="line">    fdata = open(fin, <span class="string">'rb'</span>).read()</span><br><span class="line">    feature = <span class="string">'0FFD000083C414E8073C000085C074416858DA47006A04'</span>.decode(<span class="string">'hex'</span>)</span><br><span class="line">    patched = <span class="string">'0FFD000083C414E8073C000085C0EB416858DA47006A04'</span>.decode(<span class="string">'hex'</span>)</span><br><span class="line">    pdata = fdata.replace(feature, patched)</span><br><span class="line">    open(fout, <span class="string">'wb'</span>).write(pdata)</span><br></pre></td></tr></table></figure></p>
 <h1 id="创建临时文件并将其创建为子进程">创建临时文件并将其创建为子进程</h1><hr>
 <p>对于Load文件，我的做法是先在临时目录生成一个Patched文件，然后获取到参数后创建一个进程来执行Patched文件，待执行完毕后清理临时文件。<br>因为创建临时文件后需要创建子进程，在创建进程时不可以有进程占有该文件，所以无法使用tempfile.TemporaryFile()函数和tempfile.NamedTemporaryFile()函数。<br>我使用的是tempfile.mkstmp()函数创建临时文件,但在写入完成且关闭文件后，仍无法成功创建进程，错误信息为WindowsError 32，该文件被其他进程占用。<br>搜索后发现除关闭文件外，还需调用os.close()函数，关闭文件描述符，之后可正常创建进程。<br>Loader部分代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadFile</span><span class="params">(fin)</span>:</span></span><br><span class="line"><span class="comment">#==============================================================================</span></span><br><span class="line"><span class="comment"># load程序，fin为需要load文件</span></span><br><span class="line">    fd, fout = tempfile.mkstemp(suffix=<span class="string">'.exe'</span>)</span><br><span class="line">    patchFile(fin, fout)</span><br><span class="line">    args = getCommandLine(fin)</span><br><span class="line">    os.close(fd)</span><br><span class="line">    subprocess.call(<span class="string">'%s %s'</span> % (fout, args))</span><br><span class="line">    os.remove(fout)</span><br></pre></td></tr></table></figure></p>
-</span>
+
       
     </div>
 
@@ -358,7 +376,7 @@
           <div class="post-nav-next post-nav-item">
             
               <a href="/2014/05/06/repair-pcxfirefox-crash-in-win81-x64-environment/" rel="next" title="修复Win8.1 x64环境下PcxFirefox打开文件崩溃">
-                <i class="fa fa-chevron-left fa-fw"></i> 修复Win8.1 x64环境下PcxFirefox打开文件崩溃
+                <i class="fa fa-chevron-left"></i> 修复Win8.1 x64环境下PcxFirefox打开文件崩溃
               </a>
             
           </div>
@@ -366,7 +384,7 @@
           <div class="post-nav-prev post-nav-item">
             
               <a href="/2015/03/14/anie-vbs-worm-code-analysis/" rel="prev" title="VBS蠕虫 Anie 代码分析">
-                VBS蠕虫 Anie 代码分析 <i class="fa fa-chevron-right fa-fw"></i>
+                VBS蠕虫 Anie 代码分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -387,18 +405,18 @@
 
 
           </div>
-
           
 
+
           
-            <div class="comments" id="comments">
-              
-                <div class="ds-thread" data-thread-key="2014/06/19/python-script-written-with-patch/"
-                     data-title="用Python写Patch脚本" data-url="http://blog.smvirus.com/2014/06/19/python-script-written-with-patch/" data-author-key="1">
-                </div>
-              
-            </div>
-          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/06/19/python-script-written-with-patch/"
+           data-title="用Python写Patch脚本" data-url="http://blog.smvirus.com/2014/06/19/python-script-written-with-patch/" data-author-key="1">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -416,6 +434,8 @@
     <div class="sidebar-inner">
 
       
+
+      
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -426,30 +446,32 @@
         </ul>
       
 
-      <section class="site-overview">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7xicmh.com1.z0.glb.clouddn.com/website/author.jpg" alt="lSHANG" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="http://7xicmh.com1.z0.glb.clouddn.com/website/author.jpg"
+               alt="lSHANG" />
           <p class="site-author-name" itemprop="name">lSHANG</p>
+          <p class="site-description motion-element" itemprop="description">永远年轻，永远热泪盈眶！</p>
         </div>
-        <p class="site-description motion-element" itemprop="description">永远年轻，永远热泪盈眶！</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
-            <a href="/categories">
+            
               <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">分类</span>
-              </a>
+              
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -459,7 +481,7 @@
         
           <div class="feed-link motion-element">
             <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed fa-fw"></i>
+              <i class="fa fa-rss"></i>
               RSS
             </a>
           </div>
@@ -470,25 +492,33 @@
             
               <span class="links-of-author-item">
                 <a href="http://smvirus.com" target="_blank">
-                  <i class="fa fa-home fa-fw"></i> Home
+                  
+                    <i class="fa fa-globe"></i> Home
+                  
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="https://www.github.com/luoxiaohei" target="_blank">
-                  <i class="fa fa-github fa-fw"></i> GitHub
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://weibo.com/lshang" target="_blank">
-                  <i class="fa fa-weibo fa-fw"></i> Weibo
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="MailTo:Admin@SMVirus.CoM" target="_blank">
-                  <i class="fa fa-envelope fa-fw"></i> Envelope
+                  
+                    <i class="fa fa-envelope"></i> Mail
+                  
                 </a>
               </span>
             
@@ -506,7 +536,7 @@
 
         <div class="links-of-author motion-element">
           
-            <p class="site-author-name">His friends</p>
+            <p class="site-author-name">Links</p>
             
               <span class="links-of-author-item">
                 <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
@@ -526,15 +556,21 @@
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
           <div class="post-toc">
             
+              
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取PE文件版本信息"><span class="nav-text">获取PE文件版本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在Python中查找及修改特征码"><span class="nav-text">在Python中查找及修改特征码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建临时文件并将其创建为子进程"><span class="nav-text">创建临时文件并将其创建为子进程</span></a></li></ol></div>
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取PE文件版本信息"><span class="nav-number">1.</span> <span class="nav-text">获取PE文件版本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在Python中查找及修改特征码"><span class="nav-number">2.</span> <span class="nav-text">在Python中查找及修改特征码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建临时文件并将其创建为子进程"><span class="nav-number">3.</span> <span class="nav-text">创建临时文件并将其创建为子进程</span></a></li></ol></div>
             
           </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
         </section>
       
 
@@ -547,12 +583,13 @@
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
   &copy;  2014 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart fa-fw"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lSHANG</span>
 </div>
@@ -569,77 +606,55 @@
 </div>
 
 
-  <div class="busuanzi">
-    <span id="busuanzi_container_site_pv">
-      访问 <a class="theme-link" href="http://service.ibruce.info"><span id="busuanzi_value_site_pv"></span></a> 次
-    </span>
-  </div>
-  <div class="busuanzi">
-    <span id="busuanzi_container_site_uv">
-      来访 <a class="theme-link" href="http://service.ibruce.info"><span id="busuanzi_value_site_uv"></span></a> 人
-    </span>
-  </div>
 
-
-
- </div>
+      </div>
     </footer>
 
     <div class="back-to-top"></div>
   </div>
 
+  
+
+
+  
+
+
+
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
-  
-  
-  
-    
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"smVirus"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-
-
-    
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
-
-
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.0"></script>
 
 <script type="text/javascript" id="sidebar.toc.highlight">
   $(document).ready(function () {
@@ -719,7 +734,7 @@
 
     function tocOverflowIndicator (indicator, action) {
       var $indicator = $(indicator);
-      var opacity = action === 'show' ? 0.4 : 0;
+      var opacity = action === 'show' ? 1 : 0;
       $indicator.velocity ?
         $indicator.velocity('stop').velocity({
           opacity: opacity
@@ -786,136 +801,152 @@
     });
 
     // Expand sidebar on post detail page by default, when post has a toc.
-    var $tocContent = $('.post-toc-content');
-    if (isDesktop() && CONFIG.sidebar === 'post') {
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-        displaySidebar();
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
       }
-    }
+    };
   });
 </script>
 
 
 
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.0"></script>
+
+
+
+  
+
+  
+    
+  
+
   <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
-
-      // TODO: Isolate Scheme-oriented scripts.
-      if (isPisces()) {
-        var $sidebar = $('#sidebar');
-        var headerHeight = $('.header-inner').height();
-        $sidebar
-          .css({ 'margin-top': headerHeight + 10 })
-          .show();
-      }
-
-      motionIntegrator.bootstrap();
-    });
+    var duoshuoQuery = {short_name:"smVirus"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
   </script>
 
   
+    
+  
+
+
+
+
+
+  
   
 
   
   
-  <!-- custom analytics part create by xiamo -->
-<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("JiHkUg7w573a204xAK1HLNQ4", "UpFfdyF2BT2dx4TQI3OyBnAK");</script>
-<script>
-function showTime(Counter) {
-    var query = new AV.Query(Counter);
-    $(".leancloud_visitors").each(function() {
-        var url = $(this).attr("id").trim();
-        query.equalTo("url", url);
-        query.find({
-            success: function(results) {
-                if (results.length == 0) {
-                    var content = $(document.getElementById(url)).text() + ': 0';
-                    $(document.getElementById(url)).text(content);
-                    return;
-                }
-                for (var i = 0; i < results.length; i++) {
-                    var object = results[i];
-                    var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
-                    $(document.getElementById(url)).text(content);
-                }
-            },
-            error: function(object, error) {
-                console.log("Error: " + error.code + " " + error.message);
-            }
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JiHkUg7w573a204xAK1HLNQ4", "UpFfdyF2BT2dx4TQI3OyBnAK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
         });
+    }
 
-    });
-}
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
 
-function addCount(Counter) {
-    var Counter = AV.Object.extend("Counter");
-    url = $(".leancloud_visitors").attr('id').trim();
-    title = $(".leancloud_visitors").attr('data-flag-title').trim();
-    var query = new AV.Query(Counter);
-    query.equalTo("url", url);
-    query.find({
+      query.equalTo("url", url);
+      query.find({
         success: function(results) {
-            if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                    success: function(counter) {
-                        var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
-                        $(document.getElementById(url)).text(content);
-                    },
-                    error: function(counter, error) {
-                        console.log('Failed to save Visitor num, with error message: ' + error.message);
-                    }
-                });
-            } else {
-                var newcounter = new Counter();
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                    success: function(newcounter) {
-                        console.log("newcounter.get('time')="+newcounter.get('time'));
-                        var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
-                        $(document.getElementById(url)).text(content);
-                    },
-                    error: function(newcounter, error) {
-                        console.log('Failed to create');
-                    }
-                });
-            }
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
         },
         error: function(error) {
-            console.log('Error:' + error.code + " " + error.message);
+          console.log('Error:' + error.code + " " + error.message);
         }
-    });
-}
-$(function() {
-    var Counter = AV.Object.extend("Counter");
-    if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-    } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-    }
-}); 
-</script>
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
       });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
     });
   </script>
+
+
+
+
 </body>
 </html>

