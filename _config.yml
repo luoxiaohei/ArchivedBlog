@@ -63,7 +63,15 @@ pagination_dir: page
 ## Themes: http://hexo.io/themes/
 plugins:
 - hexo-generator-feed
-- hexo-generator-sitemap
+- hexo-generator-seo-friendly-sitemap
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+sitemap:
+  path: sitemap.xml
 
 theme: NexT
 stylus:
